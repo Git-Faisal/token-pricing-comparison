@@ -1,0 +1,8 @@
+.openrouter_key
+*.key
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+models.json
+dryrun*.json

@@ -1,0 +1,24 @@
+Extract the following fields from the invoice below and return ONLY a JSON object with exactly these keys: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. Do not include any other text.
+
+---
+
+DAR AL-TEQNIA TRADING CO.
+P.O. Box 88451, Riyadh 11662, Kingdom of Saudi Arabia
+VAT Registration: 310881234500003
+
+TAX INVOICE
+
+Invoice Number: INV-2026-0847
+Invoice Date: 3 July 2026
+Customer: Rusukh Ventures, Olaya District, Riyadh
+
+Line Items:
+1. Business laptop, model TX-14 ............ Qty 4 x 5,200.00 SAR = 20,800.00 SAR
+2. Docking station, USB-C dual display ..... Qty 6 x 480.00 SAR  =  2,880.00 SAR
+3. Annual on-site support package .......... Qty 1 x 7,500.00 SAR =  7,500.00 SAR
+
+Subtotal (excl. VAT): 31,180.00 SAR
+VAT (15%): 4,677.00 SAR
+TOTAL (incl. VAT): 35,857.00 SAR
+
+Payment terms: Net 30. Bank transfer only.
