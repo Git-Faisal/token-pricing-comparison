@@ -1,0 +1,59 @@
+{
+ "model": "openai/gpt-5.6-sol",
+ "task": "extract_ar",
+ "run": 2,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON يحتوي على هذه المفاتيح بالضبط: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. لا تُضِف أي نص آخر.\n\n---\n\nشركة دار التقنية التجارية\nص.ب 88451، الرياض 11662، المملكة العربية السعودية\nالرقم الضريبي: 310881234500003\n\nفاتورة ضريبية\n\nرقم الفاتورة: INV-2026-0847\nتاريخ الفاتورة: 3 يوليو 2026\nالعميل: رسوخ فنتشرز، حي العليا، الرياض\n\nالبنود:\n1. حاسوب محمول للأعمال، طراز TX-14 ............ الكمية 4 × 5,200.00 ريال = 20,800.00 ريال\n2. محطة إرساء USB-C بشاشتين ..... الكمية 6 × 480.00 ريال = 2,880.00 ريال\n3. باقة الدعم السنوي في الموقع .......... الكمية 1 × 7,500.00 ريال = 7,500.00 ريال\n\nالإجمالي الفرعي (غير شامل الضريبة): 31,180.00 ريال\nضريبة القيمة المضافة (15%): 4,677.00 ريال\nالإجمالي (شامل الضريبة): 35,857.00 ريال\n\nشروط الدفع: 30 يوماً صافي. تحويل بنكي فقط.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787192654-aF5H5cOrhKsN7Kn6L0fd",
+   "object": "chat.completion",
+   "created": 1787192654,
+   "model": "openai/gpt-5.6-sol",
+   "provider": "OpenAI",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "completed",
+     "message": {
+      "role": "assistant",
+      "content": "{\"invoice_number\":\"INV-2026-0847\",\"invoice_date\":\"2026-07-03\",\"vendor\":\"شركة دار التقنية التجارية\",\"total_incl_vat\":35857.00,\"currency\":\"SAR\",\"num_line_items\":3}",
+      "refusal": null,
+      "reasoning": null
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 321,
+    "completion_tokens": 54,
+    "total_tokens": 375,
+    "cost": 0.0016125,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0016125,
+     "upstream_inference_prompt_cost": 0.0008025,
+     "upstream_inference_completions_cost": 0.00081
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

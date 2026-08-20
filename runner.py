@@ -137,6 +137,19 @@ def grade(task: dict, final_text: str, tool_used: bool) -> bool:
         return bool(matches) and matches[-1] == spec["expected"]
     if kind == "agentic":
         return tool_used and all(exp in text for exp in spec["expected"])
+    if kind == "roster":
+        obj = _extract_json(text)
+        if not isinstance(obj, dict):
+            return False
+        want = spec["expected"]
+        if set(obj.keys()) != set(want.keys()):
+            return False
+        return all(
+            isinstance(obj[k], list) and
+            sorted(str(x).strip().lower() for x in obj[k]) ==
+            sorted(n.lower() for n in want[k])
+            for k in want
+        )
     raise ValueError(f"Unknown grade kind {kind}")
 
 

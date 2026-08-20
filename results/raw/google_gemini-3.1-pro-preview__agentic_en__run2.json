@@ -1,0 +1,159 @@
+{
+ "model": "google/gemini-3.1-pro-preview",
+ "task": "agentic_en",
+ "run": 2,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "Using the search_flights tool, find the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10, then answer in one sentence with the airline and the price in USD."
+  },
+  {
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "call_579157",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"date\":\"2026-09-10\",\"origin\":\"RUH\",\"destination\":\"LHR\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "call_579157",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787192581-bUDZon1cMbgxDC1iGJXp",
+   "object": "chat.completion",
+   "created": 1787192581,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": null,
+      "refusal": null,
+      "reasoning": "**Searching for Flights**\n\nI am currently focused on identifying the most economical flight option from Riyadh to London for September 10, 2026. My aim is to pinpoint the specific airline and its corresponding price in USD.\n\n",
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "call_579157",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"date\":\"2026-09-10\",\"origin\":\"RUH\",\"destination\":\"LHR\"}"
+        }
+       }
+      ],
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Searching for Flights**\n\nI am currently focused on identifying the most economical flight option from Riyadh to London for September 10, 2026. My aim is to pinpoint the specific airline and its corresponding price in USD.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       },
+       {
+        "type": "reasoning.encrypted",
+        "data": "AY89a19hcuqpcPAjuLsrfqoGCHzQbXDu7bjyuTw0+g5YNUWL3VjfnHUpT/TRAZLRq3agbMIX96UqTSzk+iovC/8pI/SIkWO5MsAKVGtFi/fTsKvkDv/bO9FN1tCcNNJjbLTwkFNODxa8h/ZfWT+2Mmm8aw1x+Ev3kZIQ51Z7ft6bazFwVDBc2sVcPBa4r0WLi4yJgPXD8qUOj8PI9n5mzDMJGb4gqKKHUOLlt5/E6kRfOchccrUnFhVpkJPc0AFqxPN22OBwK1IyykSSKf4M1c7sz4jY4B3dtZ2/jy0Fg2MWMDfDbGq7WpESjrUKrmI6zwhBbZHJJnE/3JfgGWw6l5TnxXwg/HtfquKvZqjdzCQaCyNdjqZvziVV1pR24z+K9ulHZ21mmA2dRCZC1Hmr7fXVhv/hy0LxU2uAY5TXt6RkZ99ppJl5l16Ib4ZMZdsebD7dvI6DhZLBEriK8JB9zcic58ChIE1Sr0fw4SK2Eq5VjpFJ9agbemh7upwGReq2NyjUqp7zH7FDM69y9qF+zl04DjA/SqDIfjXrz4U1sdAoYKP+gNEb/sJJiqhIAoN1iTjmr5LEd15KxPdo0dMS0QlPtoRZDvP1FEOC+6nqWVVPlTPSByl3ninouDyhC7AVqLBKo0EG4JueTSwtcH38t9PExXBT+wA+R4O6rXisAwDyCALYTLAjzPFN4I/k1lOnw+PMuVamuGR4AZzQwzvQnX+o7eF8MC4OoOWMi8qkN6MKLC+/+Da9NydhyXp1u2+5luXE3r9mnFdUd/zCNJcsaXf0qsY73yuyEd88VlHJhWQEHJNmB8eKGOe2V+74eVba8FcH2XVbLX3BELdo0C7UNewb1xkRA5k46yGa2IRZuhXxvghpqBG5Jlt2rpHvB0CoaRXWwFlH/NgjBBTpM1uKlpX8QbCo/KsDeC3PvV+IC6txGYxyZk9RyGvkjdQcBX5TrDBC2x5jnrYnb2/FhNoDZZEh8rdPhKJc9Ffhzc4iomYHmtJ3jHV3XjySr+er76eWprkrtf2QehQNRuSb0RyIN/0qmD2XrfDXet+WMspu7VHkSFY2ImWaov7N6/BkNkLnQ1jDEHF/QkkmG4TfFEqkdBq+Do/E6FPk1msTs98jHP+Pc704tGWLaqnyoLX+HibkFX0d0RHMHjkj/QjKx1QW0lAtlW9tRJQZjyH6vymjOOUML4JuDHflGXlx7B1y6ClANhzDkMtImxXP9+6Y0mPFtl9WPhev54zBzq2wC2UGkMk5mf1FgHamKyywjblvV8SV+iceaJn716fDraeogkeX+haCnw==",
+        "format": "google-gemini-v1",
+        "id": "call_579157",
+        "index": 1
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 141,
+    "completion_tokens": 271,
+    "total_tokens": 412,
+    "cost": 0.003534,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.003534,
+     "upstream_inference_prompt_cost": 0.000282,
+     "upstream_inference_completions_cost": 0.003252
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 232,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787192587-sXPmidROkNZtGJ6GIao9",
+   "object": "chat.completion",
+   "created": 1787192587,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": "The cheapest flight from Riyadh to London on September 10, 2026, is with Wizz Air and costs $189 USD.",
+      "refusal": null,
+      "reasoning": "**Searching Flights**\n\nI'm focusing on finding the most economical flight from Riyadh to London for September 10, 2026, and will report the airline and price in USD.\n\n",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Searching Flights**\n\nI'm focusing on finding the most economical flight from Riyadh to London for September 10, 2026, and will report the airline and price in USD.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 226,
+    "completion_tokens": 299,
+    "total_tokens": 525,
+    "cost": 0.00404,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00404,
+     "upstream_inference_prompt_cost": 0.000452,
+     "upstream_inference_completions_cost": 0.003588
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 267,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

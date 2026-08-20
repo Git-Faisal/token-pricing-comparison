@@ -1,0 +1,67 @@
+{
+ "model": "google/gemini-3.1-pro-preview",
+ "task": "extract_en",
+ "run": 1,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "Extract the following fields from the invoice below and return ONLY a JSON object with exactly these keys: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. Do not include any other text.\n\n---\n\nDAR AL-TEQNIA TRADING CO.\nP.O. Box 88451, Riyadh 11662, Kingdom of Saudi Arabia\nVAT Registration: 310881234500003\n\nTAX INVOICE\n\nInvoice Number: INV-2026-0847\nInvoice Date: 3 July 2026\nCustomer: Rusukh Ventures, Olaya District, Riyadh\n\nLine Items:\n1. Business laptop, model TX-14 ............ Qty 4 x 5,200.00 SAR = 20,800.00 SAR\n2. Docking station, USB-C dual display ..... Qty 6 x 480.00 SAR  =  2,880.00 SAR\n3. Annual on-site support package .......... Qty 1 x 7,500.00 SAR =  7,500.00 SAR\n\nSubtotal (excl. VAT): 31,180.00 SAR\nVAT (15%): 4,677.00 SAR\nTOTAL (incl. VAT): 35,857.00 SAR\n\nPayment terms: Net 30. Bank transfer only.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787191012-UP6UDtzQ8WGUGNX8H8fh",
+   "object": "chat.completion",
+   "created": 1787191012,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": "{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 July 2026\",\n  \"vendor\": \"DAR AL-TEQNIA TRADING CO.\",\n  \"total_incl_vat\": \"35,857.00\",\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}",
+      "refusal": null,
+      "reasoning": "**Processing Invoice Data**\n\nI'm currently focused on the intricate task of parsing invoice text. My primary objective is to accurately extract key data points and present them exclusively in a JSON format, ensuring a clean and structured output for downstream processing.\n\n**Extracting Key Data**\n\nI'm refining the extraction process to specifically target invoice numbers, dates, vendor names, total amounts including VAT, currency, and the count of line items. My current focus is on ensuring precise parsing of these elements from the provided text.\n\n**Formatting JSON Output**\n\nI am concentrating on ensuring the JSON output adheres to strict formatting rules, prioritizing raw JSON presentation over markdown blocks. This includes careful consideration for numeric types and precise string representations of values like currency amounts.\n\n",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Processing Invoice Data**\n\nI'm currently focused on the intricate task of parsing invoice text. My primary objective is to accurately extract key data points and present them exclusively in a JSON format, ensuring a clean and structured output for downstream processing.\n\n**Extracting Key Data**\n\nI'm refining the extraction process to specifically target invoice numbers, dates, vendor names, total amounts including VAT, currency, and the count of line items. My current focus is on ensuring precise parsing of these elements from the provided text.\n\n**Formatting JSON Output**\n\nI am concentrating on ensuring the JSON output adheres to strict formatting rules, prioritizing raw JSON presentation over markdown blocks. This includes careful consideration for numeric types and precise string representations of values like currency amounts.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 338,
+    "completion_tokens": 1253,
+    "total_tokens": 1591,
+    "cost": 0.015712,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.015712,
+     "upstream_inference_prompt_cost": 0.000676,
+     "upstream_inference_completions_cost": 0.015036
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 1159,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

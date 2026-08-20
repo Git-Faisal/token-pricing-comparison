@@ -35,6 +35,7 @@ Open-weight models are pinned to the lab's own hosting endpoint
 | `extract` | Structured output: invoice -> fixed-schema JSON |
 | `sudoku_moderate` | Reasoning burn on a solvable puzzle (Sudoku-Extreme test split, rating 1) |
 | `sudoku_extreme` | Reasoning burn at the frontier (Sudoku-Extreme "forum hardest", rating 60) |
+| `roster` | An enterprise constraint problem: a driver shift roster with 10 interlocking rules and a provably unique solution (see `tools/make_roster.py`) |
 | `agentic` | A tool-use loop: flight search with a canned tool result |
 
 Sudoku puzzles and reference solutions come from the

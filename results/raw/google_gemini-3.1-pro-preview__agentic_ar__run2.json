@@ -1,0 +1,159 @@
+{
+ "model": "google/gemini-3.1-pro-preview",
+ "task": "agentic_ar",
+ "run": 2,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "باستخدام أداة search_flights، ابحث عن أرخص رحلة طيران من الرياض (RUH) إلى لندن (LHR) بتاريخ 2026-09-10، ثم أجب في جملة واحدة باسم شركة الطيران والسعر بالدولار الأمريكي."
+  },
+  {
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "call_555036",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"destination\":\"LHR\",\"date\":\"2026-09-10\",\"origin\":\"RUH\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "call_555036",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787192612-O3NC54ENxRUoqRD6lqRw",
+   "object": "chat.completion",
+   "created": 1787192612,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": null,
+      "refusal": null,
+      "reasoning": "**Searching for Flights**\n\nI am actively scouring flight options from Riyadh to London for September 10, 2026. My current focus is on pinpointing the most economical fares to present to you.\n\n",
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "call_555036",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"destination\":\"LHR\",\"date\":\"2026-09-10\",\"origin\":\"RUH\"}"
+        }
+       }
+      ],
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Searching for Flights**\n\nI am actively scouring flight options from Riyadh to London for September 10, 2026. My current focus is on pinpointing the most economical fares to present to you.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       },
+       {
+        "type": "reasoning.encrypted",
+        "data": "AY89a187MieoxPBoxD4wIP0LrNjpMklef+pHVd6kbu18OWLYCiAyE3qDrZwYr6Xcg+B8fdVGFW5Kdi8C8cop+6kFBMo5HbniXBXQAO4FGel+jDNzRehkyKqgeHGj5+3UpGkUjV85C1HlOA8e75yCu4pMvnCsBTs488TnstP8UZfefL7mg8JUt8nRg+KJWp112AATkuun9VS/oWA+FSvcVooQPvxrSRnTYSCAcWlnX1midF5EVARPJpzIz6D85FyOSSKHdFfYx2CSqDxnAdxqr2DgA4OwWA7A2q0hz5Yrjx3LcunA+nloTEUS7baELhxdJkIyYgSvHhI3ySmY6mPAJMOi9pIA8f4DHbr1HaDVYCM1etxMw8eiRd7FeTnQ4tx1MvmDl9cXTorYueyjmfyjzTdpWEFHd21tW/xGa/QYYCZOUzDaAty+svz66g7Szh6P3/AoiQJ2n+oDsoU2CDmxCydi1Ee0nPxKXdCWLKMCOkcKaPB5HkxXn88vyB08Iwcgcw4x4mQKzaj1IUmXS7jndcgCFyI8S1aUVdpBFFjeWBnW6gXEYTUC+M9S/adiq0UU0pVLRwvethCXH+P/uwFhp97QtyoZJuwCs3x/CF/O8y+d1fe5tDx+VInSLsOP3IIlWBWD46bfIGCXgVZoBN/GdTTQsZXqGcQXntfBXYD8l5aziq4xYZFDVIGd3KrEaE1PR7tsxgLZgo/ATef8IPrGnDJR0UrW0I1UoYBlaCEaALQ2dkMA4R+P2Y/s1/KjAnNYMs4tUFK9cekluLJWhdTcnymd89z09pKE+Zeh0/Qr4OVEgvVy1spu4CEd4NpkGgUIH7KHWQv6ftOqZRIuq34c7UjlJYx4T49SOym2ZXT+CUUDxsSSQ+YheB415NERwarRb3oQkdI2bMMNyUg2ZK5bhvqfKbXqPA28YAIq9Wt7SBl0fLobePioSkdDAIQ3tfHTJBHDQTXC5JdBmEK4i909d2E23SXrxaAw/W1gnQ62kll9uS5nQiug2Lta0lnYdLXCkSOylNM73RNN/kfsS37gB6iKjchBiPnZOq5G0Dd8+oPMFg+Mfwz2Qs7W4Xh84qn48eEgZz4+qp6TgmGNMEfiCdr18UDtnuU9DogtuqcgPxa3ekWNVAI0eTID7bzIT0AkZ8819p3kDoiFP2JZfKVvws6Hc+bwtrOAevtgahzVcu4kfck8jaRZGRbLp25TYBa8iTcyXiR5DI+CNaUdjHRjQbCccEAiXr3b3rr/0KKZfFFEN5M4Zjw+iA74gLm5HTHVCOVwMIWVSf+Kcbb+ELhTzDX1kNzbeHpcLbYU8bMf5mvELAP2DdIC2VK0iV/77XZ5QJU5q5g5Ep54gd+GWhiLbMPHDPF7vMYufZbeCeXzTWPXsHmj+/bGiAfGt/EyPe8Li8pq7PTmYkDhesF8AHUxHFxgk7CvHR0pY/4RoqgOKvk03H2TsnOTQm+1TXb/kwEEHoEYjmmDd3tH+io7GQggpMkyU4vxUKPH9vVYcyY8O3C43DvSVMnCcUo2tn4J9sIDcw+7PzpQKAnY3UGlTKTrB4Uu2BhGRqV77T1fuMzHmjr1CAFLr+Z0pJT712Zi6mvT2zLgDfQUOf2X/8BVBMol8U3V35gX",
+        "format": "google-gemini-v1",
+        "id": "call_555036",
+        "index": 1
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 153,
+    "completion_tokens": 329,
+    "total_tokens": 482,
+    "cost": 0.004254,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.004254,
+     "upstream_inference_prompt_cost": 0.000306,
+     "upstream_inference_completions_cost": 0.003948
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 290,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787192617-taqIk7LuKIyf1hxxNbsF",
+   "object": "chat.completion",
+   "created": 1787192618,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": "أرخص رحلة طيران تقدمها شركة Wizz Air بسعر 189 دولاراً أمريكياً.",
+      "refusal": null,
+      "reasoning": "**Finding Cheapest Flight**\n\nI am currently focused on identifying the most economical flight option from Riyadh to London for the specified date. My aim is to pinpoint the lowest fare to fulfill the user's request.\n\n",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Finding Cheapest Flight**\n\nI am currently focused on identifying the most economical flight option from Riyadh to London for the specified date. My aim is to pinpoint the lowest fare to fulfill the user's request.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 238,
+    "completion_tokens": 358,
+    "total_tokens": 596,
+    "cost": 0.004772,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.004772,
+     "upstream_inference_prompt_cost": 0.000476,
+     "upstream_inference_completions_cost": 0.004296
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 333,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

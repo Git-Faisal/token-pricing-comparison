@@ -1,0 +1,67 @@
+{
+ "model": "deepseek/deepseek-v4-pro-0813",
+ "task": "extract_ar",
+ "run": 3,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON يحتوي على هذه المفاتيح بالضبط: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. لا تُضِف أي نص آخر.\n\n---\n\nشركة دار التقنية التجارية\nص.ب 88451، الرياض 11662، المملكة العربية السعودية\nالرقم الضريبي: 310881234500003\n\nفاتورة ضريبية\n\nرقم الفاتورة: INV-2026-0847\nتاريخ الفاتورة: 3 يوليو 2026\nالعميل: رسوخ فنتشرز، حي العليا، الرياض\n\nالبنود:\n1. حاسوب محمول للأعمال، طراز TX-14 ............ الكمية 4 × 5,200.00 ريال = 20,800.00 ريال\n2. محطة إرساء USB-C بشاشتين ..... الكمية 6 × 480.00 ريال = 2,880.00 ريال\n3. باقة الدعم السنوي في الموقع .......... الكمية 1 × 7,500.00 ريال = 7,500.00 ريال\n\nالإجمالي الفرعي (غير شامل الضريبة): 31,180.00 ريال\nضريبة القيمة المضافة (15%): 4,677.00 ريال\nالإجمالي (شامل الضريبة): 35,857.00 ريال\n\nشروط الدفع: 30 يوماً صافي. تحويل بنكي فقط.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787188627-Y9GSZBFUdu0XXNHjJzaY",
+   "object": "chat.completion",
+   "created": 1787188627,
+   "model": "deepseek/deepseek-v4-pro-0813",
+   "provider": "DeepSeek",
+   "system_fingerprint": "a307abda487cd1b463329ccb945ce396",
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "{\"invoice_number\":\"INV-2026-0847\",\"invoice_date\":\"2026-07-03\",\"vendor\":\"شركة دار التقنية التجارية\",\"total_incl_vat\":35857.00,\"currency\":\"SAR\",\"num_line_items\":3}",
+      "refusal": null,
+      "reasoning": "We need answer only JSON object. Need parse Arabic invoice. Need extract invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. Need ensure exact keys. Values.\n\nInvoice number: INV-2026-0847. Date: 3 يوليو 2026. Vendor: شركة دار التقنية التجارية. Total incl vat: 35,857.00? Currency SAR? The invoice says ريال. Should currency be \"SAR\" likely. num_line_items: 3. Need output JSON only. But perhaps total_incl_vat numeric? The prompt says extract fields and return JSON object containing these keys. Could use string values or numbers. Need maybe total_incl_vat as number 35857.00? In JSON, 35857.0 maybe. currency \"SAR\". num_line_items 3. invoice_date maybe \"2026-07-03\" or original \"3 يوليو 2026\"? Need \"extract fields\" might preserve as in invoice? They ask JSON. Usually date should be ISO? Hmm.\n\nNeed decide. Let's inspect. Invoice date text: 3 يوليو 2026. If we use \"2026-07-03\" maybe transformation. But \"extract\" could preserve original text. The keys include invoice_date, no format specified. Need infer from invoice extraction tasks. Could return as \"2026-07-03\" due date standardization. But Arabic month name; maybe \"2026-07-03\" is valid. Vendor should be exact Arabic \"شركة دار التقنية التجارية\". Total_incl_vat: 35857.00. Currency: \"ريال\" or \"SAR\"? Since currency key would likely expect ISO \"SAR\". Invoice mentions ريال. Need use SAR. But if language Arabic, maybe \"ريال سعودي\". Let's think.\n\nUser says \"استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON يحتوي على هذه المفاتيح بالضبط... لا تُضِف أي نص آخر.\" So need extract from invoice. The currency in invoice is not explicit ISO, it says ريال. But as extraction, currency field likely expects SAR. Should I include \"SAR\"? The invoice total says \"ريال\" but Saudi Arabia. Many systems with currency key use ISO 4217. If no explicit \"SAR\", infer from context. Since requested \"currency\", maybe \"SAR\" is appropriate.\n\nNeed produce exactly JSON object. Need maybe quote numeric values? \"invoice_number\": \"INV-2026-0847\", \"invoice_date\": \"2026-07-03\", \"vendor\": \"شركة دار التقنية التجارية\", \"total_incl_vat\": 35857.00, \"currency\": \"SAR\", \"num_line_items\": 3.\n\nPotential issue JSON numbers can't have trailing zero? 35857.00 in JSON number is invalid? Actually JSON numeric grammar allows 35857.00? Let's recall: number = [ minus ] int [ frac ] [ exp ]. frac = decimal point one or more digits. So 35857.00 is valid. But many parsers treat fine. Could use 35857.0 or 35857.00. The extracted value includes two decimals. Could represent as number 35857.0 or 35857.00. In JSON, trailing zeros after decimal are allowed; 35857.00 is syntactically valid. But to be safe maybe put as 35857.0? Need exact from invoice: 35,857.00. If value numeric, 35857.00 maybe okay. Would JSON output include commas? No.\n\nCould also use strings for all to preserve formatting: \"35,857.00\". But key \"total_incl_vat\" maybe numeric. Need decide. The instruction says \"كائن JSON يحتوي على هذه المفاتيح\" not type. I'd output numeric total and num_line_items. Dates maybe string.\n\nNeed maybe \"invoice_date\": \"03/07/2026\"? Arabic date format? \"3 يوليو 2026\" maybe convert to ISO is more standard. I'd choose ISO. Could also use exactly \"3 يوليو 2026\". Hmm.\n\nWe need satisfy \"extract fields\". In many tasks, if a date is present as text, we should return as it appears or as normalized? The user specifically asks only JSON no text. They likely evaluate exact values? If they compare string maybe not know.\n\nLet's read invoice layout maybe part of Saudi e-invoicing (ZATCA). They may expect invoice_date \"2026-07-03T00:00:00\"? No.\n\nCould use Arabic month? \"يوليو\" is July. Gregorian. ISO \"2026-07-03\" is safe and unambiguous. But if they expected original text, mismatch. The key \"invoice_date\" not \"date\" suggests maybe ISO.\n\nNeed maybe \"vendor\" should be \"شركة دار التقنية التجارية\" not include address? yes.\n\nCould include total_incl_vat as number. Need ensure JSON object only no code fences.\n\nLet's produce:\n{\"invoice_number\":\"INV-2026-0847\",\"invoice_date\":\"2026-07-03\",\"vendor\":\"شركة دار التقنية التجارية\",\"total_incl_vat\":35857.00,\"currency\":\"SAR\",\"num_line_items\":3}\nNeed ensure JSON valid. 35857.00 with trailing zeros may be okay but maybe some parsers drop. I can use 35857.0 or 35857.00. Let's use 35857.0? The number exact from invoice is 35857.00. In JSON, outputting 35857.00 is valid. Could use 35857.00.\n\nNeed maybe total_incl_vat should not have decimals? 35857 is an integer? Actually invoice says 35,857.00. Using 35857.00 might convey precision. Good.\n\nPotential issue line items count: 3. There are 3 items. yes.\n\nNeed no extra. Use Arabic? JSON must encode Arabic directly; okay.\n\nLet's final.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "We need answer only JSON object. Need parse Arabic invoice. Need extract invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. Need ensure exact keys. Values.\n\nInvoice number: INV-2026-0847. Date: 3 يوليو 2026. Vendor: شركة دار التقنية التجارية. Total incl vat: 35,857.00? Currency SAR? The invoice says ريال. Should currency be \"SAR\" likely. num_line_items: 3. Need output JSON only. But perhaps total_incl_vat numeric? The prompt says extract fields and return JSON object containing these keys. Could use string values or numbers. Need maybe total_incl_vat as number 35857.00? In JSON, 35857.0 maybe. currency \"SAR\". num_line_items 3. invoice_date maybe \"2026-07-03\" or original \"3 يوليو 2026\"? Need \"extract fields\" might preserve as in invoice? They ask JSON. Usually date should be ISO? Hmm.\n\nNeed decide. Let's inspect. Invoice date text: 3 يوليو 2026. If we use \"2026-07-03\" maybe transformation. But \"extract\" could preserve original text. The keys include invoice_date, no format specified. Need infer from invoice extraction tasks. Could return as \"2026-07-03\" due date standardization. But Arabic month name; maybe \"2026-07-03\" is valid. Vendor should be exact Arabic \"شركة دار التقنية التجارية\". Total_incl_vat: 35857.00. Currency: \"ريال\" or \"SAR\"? Since currency key would likely expect ISO \"SAR\". Invoice mentions ريال. Need use SAR. But if language Arabic, maybe \"ريال سعودي\". Let's think.\n\nUser says \"استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON يحتوي على هذه المفاتيح بالضبط... لا تُضِف أي نص آخر.\" So need extract from invoice. The currency in invoice is not explicit ISO, it says ريال. But as extraction, currency field likely expects SAR. Should I include \"SAR\"? The invoice total says \"ريال\" but Saudi Arabia. Many systems with currency key use ISO 4217. If no explicit \"SAR\", infer from context. Since requested \"currency\", maybe \"SAR\" is appropriate.\n\nNeed produce exactly JSON object. Need maybe quote numeric values? \"invoice_number\": \"INV-2026-0847\", \"invoice_date\": \"2026-07-03\", \"vendor\": \"شركة دار التقنية التجارية\", \"total_incl_vat\": 35857.00, \"currency\": \"SAR\", \"num_line_items\": 3.\n\nPotential issue JSON numbers can't have trailing zero? 35857.00 in JSON number is invalid? Actually JSON numeric grammar allows 35857.00? Let's recall: number = [ minus ] int [ frac ] [ exp ]. frac = decimal point one or more digits. So 35857.00 is valid. But many parsers treat fine. Could use 35857.0 or 35857.00. The extracted value includes two decimals. Could represent as number 35857.0 or 35857.00. In JSON, trailing zeros after decimal are allowed; 35857.00 is syntactically valid. But to be safe maybe put as 35857.0? Need exact from invoice: 35,857.00. If value numeric, 35857.00 maybe okay. Would JSON output include commas? No.\n\nCould also use strings for all to preserve formatting: \"35,857.00\". But key \"total_incl_vat\" maybe numeric. Need decide. The instruction says \"كائن JSON يحتوي على هذه المفاتيح\" not type. I'd output numeric total and num_line_items. Dates maybe string.\n\nNeed maybe \"invoice_date\": \"03/07/2026\"? Arabic date format? \"3 يوليو 2026\" maybe convert to ISO is more standard. I'd choose ISO. Could also use exactly \"3 يوليو 2026\". Hmm.\n\nWe need satisfy \"extract fields\". In many tasks, if a date is present as text, we should return as it appears or as normalized? The user specifically asks only JSON no text. They likely evaluate exact values? If they compare string maybe not know.\n\nLet's read invoice layout maybe part of Saudi e-invoicing (ZATCA). They may expect invoice_date \"2026-07-03T00:00:00\"? No.\n\nCould use Arabic month? \"يوليو\" is July. Gregorian. ISO \"2026-07-03\" is safe and unambiguous. But if they expected original text, mismatch. The key \"invoice_date\" not \"date\" suggests maybe ISO.\n\nNeed maybe \"vendor\" should be \"شركة دار التقنية التجارية\" not include address? yes.\n\nCould include total_incl_vat as number. Need ensure JSON object only no code fences.\n\nLet's produce:\n{\"invoice_number\":\"INV-2026-0847\",\"invoice_date\":\"2026-07-03\",\"vendor\":\"شركة دار التقنية التجارية\",\"total_incl_vat\":35857.00,\"currency\":\"SAR\",\"num_line_items\":3}\nNeed ensure JSON valid. 35857.00 with trailing zeros may be okay but maybe some parsers drop. I can use 35857.0 or 35857.00. Let's use 35857.0? The number exact from invoice is 35857.00. In JSON, outputting 35857.00 is valid. Could use 35857.00.\n\nNeed maybe total_incl_vat should not have decimals? 35857 is an integer? Actually invoice says 35,857.00. Using 35857.00 might convey precision. Good.\n\nPotential issue line items count: 3. There are 3 items. yes.\n\nNeed no extra. Use Arabic? JSON must encode Arabic directly; okay.\n\nLet's final.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 431,
+    "completion_tokens": 1337,
+    "total_tokens": 1768,
+    "cost": 0.005373456,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 384,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.005373456,
+     "upstream_inference_prompt_cost": 7.8936e-05,
+     "upstream_inference_completions_cost": 0.00529452
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 1282,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

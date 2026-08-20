@@ -1,0 +1,59 @@
+{
+ "model": "openai/gpt-5.6-sol",
+ "task": "docqa_en",
+ "run": 3,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "Read the following operations report, then answer the three questions at the end.\n\n---\n\nAl-Waha Logistics — Q2 2026 Operations Report\n\nAl-Waha Logistics closed the second quarter of 2026 with revenue of SAR 84.6 million, an increase of 12.3% over the same quarter last year. Growth was driven primarily by the fast-moving consumer goods segment, which now accounts for 44% of total shipment volume across our 96 enterprise clients.\n\nFleet and network. The company operated 312 trucks at quarter end, of which 41 are refrigerated units serving the cold-chain business. The major milestone of the quarter was the opening of the new distribution hub at Jeddah Islamic Port on May 14, 2026. The hub adds 22,000 square meters of sorting and cross-docking capacity and is expected to reduce average transit time on the Riyadh–Jeddah corridor by six hours.\n\nService performance. On-time delivery reached 94.2% for the quarter, up from 91.8% in Q1. The improvement is attributed to the new routing system deployed in March and to driver scheduling changes introduced at the Dammam depot. Damage claims fell to 0.4% of shipments, the lowest level the company has recorded.\n\nPeople. Headcount stood at 1,840 employees at the end of June, up from 1,655 at the end of Q1, with most new hires joining hub operations in Jeddah. The company completed 6,200 hours of driver safety training during the quarter.\n\nCosts and outlook. Fuel remained the largest cost item at 31% of total operating costs, broadly unchanged from Q1. Management expects modest fuel cost relief in Q3 following the fleet renewal program, under which 25 additional trucks will be delivered in September. The company targets 96% on-time delivery for Q3 and confirms full-year revenue guidance of SAR 340 million.\n\n---\n\nQuestions:\n1. What was Al-Waha Logistics' revenue in Q2 2026?\n2. What was the on-time delivery rate for the quarter?\n3. On what date did the new Jeddah hub open?\n\nAnswer each question in one short line.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787192636-EQiIKXp4wErbuVLVe2M7",
+   "object": "chat.completion",
+   "created": 1787192636,
+   "model": "openai/gpt-5.6-sol",
+   "provider": "OpenAI",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "completed",
+     "message": {
+      "role": "assistant",
+      "content": "1. SAR 84.6 million.\n2. 94.2%.\n3. May 14, 2026.",
+      "refusal": null,
+      "reasoning": null
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 456,
+    "completion_tokens": 30,
+    "total_tokens": 486,
+    "cost": 0.00159,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00159,
+     "upstream_inference_prompt_cost": 0.00114,
+     "upstream_inference_completions_cost": 0.00045
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

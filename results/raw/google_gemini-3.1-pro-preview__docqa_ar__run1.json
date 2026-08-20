@@ -1,0 +1,67 @@
+{
+ "model": "google/gemini-3.1-pro-preview",
+ "task": "docqa_ar",
+ "run": 1,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "اقرأ تقرير العمليات التالي، ثم أجب عن الأسئلة الثلاثة في نهايته.\n\n---\n\nالواحة للخدمات اللوجستية — تقرير العمليات للربع الثاني من عام 2026\n\nأنهت شركة الواحة للخدمات اللوجستية الربع الثاني من عام 2026 بإيرادات بلغت 84.6 مليون ريال سعودي، بزيادة قدرها 12.3% مقارنة بالربع نفسه من العام الماضي. جاء النمو مدفوعاً بشكل أساسي بقطاع السلع الاستهلاكية سريعة التداول، الذي يمثل الآن 44% من إجمالي حجم الشحنات عبر عملائنا من الشركات البالغ عددهم 96 عميلاً.\n\nالأسطول والشبكة. شغّلت الشركة 312 شاحنة بنهاية الربع، منها 41 شاحنة مبردة تخدم أعمال سلسلة التبريد. وكان الإنجاز الأبرز خلال الربع افتتاح مركز التوزيع الجديد في ميناء جدة الإسلامي بتاريخ 14 مايو 2026. يضيف المركز 22,000 متر مربع من طاقة الفرز والمناولة العابرة، ومن المتوقع أن يقلص متوسط زمن العبور على محور الرياض–جدة بمقدار ست ساعات.\n\nأداء الخدمة. بلغت نسبة التسليم في الوقت المحدد 94.2% خلال الربع، ارتفاعاً من 91.8% في الربع الأول. ويُعزى هذا التحسن إلى نظام التوجيه الجديد الذي جرى تشغيله في مارس، وإلى التغييرات في جدولة السائقين التي طُبقت في مستودع الدمام. وانخفضت مطالبات التلف إلى 0.4% من الشحنات، وهو أدنى مستوى تسجله الشركة.\n\nالموارد البشرية. بلغ عدد الموظفين 1,840 موظفاً بنهاية يونيو، ارتفاعاً من 1,655 بنهاية الربع الأول، إذ التحق معظم الموظفين الجدد بعمليات المركز في جدة. وأكملت الشركة 6,200 ساعة من التدريب على السلامة للسائقين خلال الربع.\n\nالتكاليف والتوقعات. ظل الوقود أكبر بند في التكاليف بنسبة 31% من إجمالي تكاليف التشغيل، دون تغيير يُذكر عن الربع الأول. وتتوقع الإدارة انخفاضاً طفيفاً في تكاليف الوقود خلال الربع الثالث بعد برنامج تجديد الأسطول، الذي سيجري بموجبه تسليم 25 شاحنة إضافية في سبتمبر. وتستهدف الشركة نسبة تسليم في الوقت المحدد قدرها 96% للربع الثالث، وتؤكد توقعات الإيرادات للعام الكامل البالغة 340 مليون ريال سعودي.\n\n---\n\nالأسئلة:\n1. كم بلغت إيرادات شركة الواحة للخدمات اللوجستية في الربع الثاني من عام 2026؟\n2. ما نسبة التسليم في الوقت المحدد خلال الربع؟\n3. في أي تاريخ افتُتح مركز جدة الجديد؟\n\nأجب عن كل سؤال في سطر واحد قصير.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787190986-hYMQVWswW0cj0tBvLKPV",
+   "object": "chat.completion",
+   "created": 1787190986,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": "1. بلغت إيرادات الشركة 84.6 مليون ريال سعودي.\n2. بلغت نسبة التسليم في الوقت المحدد 94.2%.\n3. افتُتح المركز بتاريخ 14 مايو 2026.",
+      "refusal": null,
+      "reasoning": "**Reviewing Logistics Report**\n\nI'm currently processing the Q2 2026 operational data for Al-Waha Logistics Services. My focus is on the specific details required to answer the posed questions regarding their performance.\n\n**Extracting On-Time Delivery Rate**\n\nI've successfully extracted the revenue figure for Al-Waha Logistics Services in Q2 2026. Now, I'm analyzing the text to pinpoint the precise on-time delivery rate for the same period, ensuring it meets the single-line answer constraint.\n\n**Determining Jeddah Center Opening**\n\nI've pinpointed the exact opening date of the new Jeddah distribution center. The information clearly states it was inaugurated on May 14, 2026.\n\n",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Reviewing Logistics Report**\n\nI'm currently processing the Q2 2026 operational data for Al-Waha Logistics Services. My focus is on the specific details required to answer the posed questions regarding their performance.\n\n**Extracting On-Time Delivery Rate**\n\nI've successfully extracted the revenue figure for Al-Waha Logistics Services in Q2 2026. Now, I'm analyzing the text to pinpoint the precise on-time delivery rate for the same period, ensuring it meets the single-line answer constraint.\n\n**Determining Jeddah Center Opening**\n\nI've pinpointed the exact opening date of the new Jeddah distribution center. The information clearly states it was inaugurated on May 14, 2026.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 693,
+    "completion_tokens": 833,
+    "total_tokens": 1526,
+    "cost": 0.011382,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.011382,
+     "upstream_inference_prompt_cost": 0.001386,
+     "upstream_inference_completions_cost": 0.009996
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 780,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

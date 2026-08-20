@@ -81,7 +81,7 @@ MODELS = [
 # Default number of runs per (model, task). The extreme sudoku is capped
 # lower because a single run can burn tens of thousands of reasoning tokens.
 DEFAULT_RUNS = 3
-RUNS_OVERRIDE = {"sudoku_extreme": 2}
+RUNS_OVERRIDE = {"sudoku_extreme": 2, "roster": 2}
 
 REQUEST_TIMEOUT_S = 900
 MAX_RETRIES = 3

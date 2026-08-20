@@ -1,0 +1,67 @@
+{
+ "model": "z-ai/glm-5.3",
+ "task": "docqa_ar",
+ "run": 3,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "اقرأ تقرير العمليات التالي، ثم أجب عن الأسئلة الثلاثة في نهايته.\n\n---\n\nالواحة للخدمات اللوجستية — تقرير العمليات للربع الثاني من عام 2026\n\nأنهت شركة الواحة للخدمات اللوجستية الربع الثاني من عام 2026 بإيرادات بلغت 84.6 مليون ريال سعودي، بزيادة قدرها 12.3% مقارنة بالربع نفسه من العام الماضي. جاء النمو مدفوعاً بشكل أساسي بقطاع السلع الاستهلاكية سريعة التداول، الذي يمثل الآن 44% من إجمالي حجم الشحنات عبر عملائنا من الشركات البالغ عددهم 96 عميلاً.\n\nالأسطول والشبكة. شغّلت الشركة 312 شاحنة بنهاية الربع، منها 41 شاحنة مبردة تخدم أعمال سلسلة التبريد. وكان الإنجاز الأبرز خلال الربع افتتاح مركز التوزيع الجديد في ميناء جدة الإسلامي بتاريخ 14 مايو 2026. يضيف المركز 22,000 متر مربع من طاقة الفرز والمناولة العابرة، ومن المتوقع أن يقلص متوسط زمن العبور على محور الرياض–جدة بمقدار ست ساعات.\n\nأداء الخدمة. بلغت نسبة التسليم في الوقت المحدد 94.2% خلال الربع، ارتفاعاً من 91.8% في الربع الأول. ويُعزى هذا التحسن إلى نظام التوجيه الجديد الذي جرى تشغيله في مارس، وإلى التغييرات في جدولة السائقين التي طُبقت في مستودع الدمام. وانخفضت مطالبات التلف إلى 0.4% من الشحنات، وهو أدنى مستوى تسجله الشركة.\n\nالموارد البشرية. بلغ عدد الموظفين 1,840 موظفاً بنهاية يونيو، ارتفاعاً من 1,655 بنهاية الربع الأول، إذ التحق معظم الموظفين الجدد بعمليات المركز في جدة. وأكملت الشركة 6,200 ساعة من التدريب على السلامة للسائقين خلال الربع.\n\nالتكاليف والتوقعات. ظل الوقود أكبر بند في التكاليف بنسبة 31% من إجمالي تكاليف التشغيل، دون تغيير يُذكر عن الربع الأول. وتتوقع الإدارة انخفاضاً طفيفاً في تكاليف الوقود خلال الربع الثالث بعد برنامج تجديد الأسطول، الذي سيجري بموجبه تسليم 25 شاحنة إضافية في سبتمبر. وتستهدف الشركة نسبة تسليم في الوقت المحدد قدرها 96% للربع الثالث، وتؤكد توقعات الإيرادات للعام الكامل البالغة 340 مليون ريال سعودي.\n\n---\n\nالأسئلة:\n1. كم بلغت إيرادات شركة الواحة للخدمات اللوجستية في الربع الثاني من عام 2026؟\n2. ما نسبة التسليم في الوقت المحدد خلال الربع؟\n3. في أي تاريخ افتُتح مركز جدة الجديد؟\n\nأجب عن كل سؤال في سطر واحد قصير.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787186239-X6ORQvciaiZw2MuPxVNQ",
+   "object": "chat.completion",
+   "created": 1787186239,
+   "model": "z-ai/glm-5.3",
+   "provider": "Z.AI",
+   "system_fingerprint": null,
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "1. بلغت الإيرادات 84.6 مليون ريال سعودي.\n2. بلغت نسبة التسليم في الوقت المحدد 94.2%.\n3. افتُتح مركز جدة الجديد بتاريخ 14 مايو 2026.",
+      "refusal": null,
+      "reasoning": "The user wants me to read the operations report and answer three questions, each in one short line, in Arabic.\n\n1. Revenue Q2 2026: 84.6 million SAR\n2. On-time delivery rate: 94.2%\n3. Jeddah center opening date: 14 May 2026\n\nAnswer each in one short line in Arabic.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The user wants me to read the operations report and answer three questions, each in one short line, in Arabic.\n\n1. Revenue Q2 2026: 84.6 million SAR\n2. On-time delivery rate: 94.2%\n3. Jeddah center opening date: 14 May 2026\n\nAnswer each in one short line in Arabic.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 792,
+    "completion_tokens": 140,
+    "total_tokens": 932,
+    "cost": 0.00084928,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 768,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00084928,
+     "upstream_inference_prompt_cost": 0.00023328,
+     "upstream_inference_completions_cost": 0.000616
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 76,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

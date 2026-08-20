@@ -1,0 +1,67 @@
+{
+ "model": "z-ai/glm-5.3",
+ "task": "extract_ar",
+ "run": 2,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON يحتوي على هذه المفاتيح بالضبط: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. لا تُضِف أي نص آخر.\n\n---\n\nشركة دار التقنية التجارية\nص.ب 88451، الرياض 11662، المملكة العربية السعودية\nالرقم الضريبي: 310881234500003\n\nفاتورة ضريبية\n\nرقم الفاتورة: INV-2026-0847\nتاريخ الفاتورة: 3 يوليو 2026\nالعميل: رسوخ فنتشرز، حي العليا، الرياض\n\nالبنود:\n1. حاسوب محمول للأعمال، طراز TX-14 ............ الكمية 4 × 5,200.00 ريال = 20,800.00 ريال\n2. محطة إرساء USB-C بشاشتين ..... الكمية 6 × 480.00 ريال = 2,880.00 ريال\n3. باقة الدعم السنوي في الموقع .......... الكمية 1 × 7,500.00 ريال = 7,500.00 ريال\n\nالإجمالي الفرعي (غير شامل الضريبة): 31,180.00 ريال\nضريبة القيمة المضافة (15%): 4,677.00 ريال\nالإجمالي (شامل الضريبة): 35,857.00 ريال\n\nشروط الدفع: 30 يوماً صافي. تحويل بنكي فقط.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787186268-TI5D8P84V0PcsjH695lN",
+   "object": "chat.completion",
+   "created": 1787186268,
+   "model": "z-ai/glm-5.3",
+   "provider": "Z.AI",
+   "system_fingerprint": null,
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 يوليو 2026\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}",
+      "refusal": null,
+      "reasoning": "The user wants me to extract fields from an Arabic invoice and return only a JSON object with exactly these keys: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items.\n\nLet me parse the invoice:\n\n- Company name (vendor): شركة دار التقنية التجارية\n- PO Box: 88451, Riyadh 11662, Saudi Arabia\n- VAT number: 310881234500003\n- Invoice type: فاتورة ضريبية (Tax invoice)\n- Invoice number: INV-2026-0847\n- Invoice date: 3 يوليو 2026 (July 3, 2026)\n- Customer: رسوخ فنتشرز (Rusukh Ventures), Al Olaya district, Riyadh\n- Line items:\n  1. Business laptop TX-14, qty 4 × 5,200.00 SAR = 20,800.00 SAR\n  2. USB-C dual-screen docking station, qty 6 × 480.00 SAR = 2,880.00 SAR\n  3. Annual on-site support package, qty 1 × 7,500.00 SAR = 7,500.00 SAR\n- Subtotal (excl. VAT): 31,180.00 SAR\n- VAT (15%): 4,677.00 SAR\n- Total (incl. VAT): 35,857.00 SAR\n\nFields:\n- invoice_number: \"INV-2026-0847\"\n- invoice_date: \"3 يوليو 2026\" — should I keep in Arabic or convert? The instruction says extract. I'll keep as in the invoice: \"3 يوليو 2026\". Or maybe format as ISO? The instruction says extract the fields, so keeping the original text is safest. Could also do \"2026-07-03\". Hmm. I'll keep the original string \"3 يوليو 2026\" since that's what's in the document. Actually, many extraction tasks prefer normalized dates. But the instruction says \"استخراج الحقول\" (extract the fields), so I'll keep the original value. I could also add ISO but that changes data. I'll keep original.\n- vendor: \"شركة دار التقنية التجارية\"\n- total_incl_vat: 35857.00 — as number? The field name suggests numeric. I'll use 35857.00 (or \"35,857.00\"). As JSON number: 35857.00. Could also be string \"35,857.00\". I'll use number 35857.00.\n- currency: The currency is ريال (SAR). I could use \"SAR\" or \"ريال\". Since the invoice is in Arabic, maybe \"SAR\" is more standard. Hmm. The currency key — \"ريال\" is the Arabic word. I'll use \"SAR\" as it's the standard code, but the invoice says \"ريال\". Let me think — the instruction says extract from the invoice. The invoice uses \"ريال\". I could use \"SAR\" since it's a Saudi invoice. I'll go with \"SAR\" as it's unambiguous... Actually, to be faithful to extraction, \"ريال\" might be better. Hmm. I'll use \"SAR\" — it's the ISO code for Saudi Riyal and clearer in JSON. Either is defensible. Let me use \"SAR\".\n\nActually, since the user asked in Arabic and the invoice is Arabic, maybe \"ريال\" would be more consistent. But SAR is the standard representation. I'll go with \"SAR\".\n\nHmm, let me reconsider. The task: \"استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON\" — extract the following fields from the invoice and return only a JSON object. So values should reflect the invoice content. Currency in the invoice is \"ريال\" (SAR). I'll use \"SAR\" as it's a cleaner code. Both work. Final: \"SAR\".\n\n- num_line_items: 3\n\nOutput only JSON, no other text.\n\nJSON:\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 يوليو 2026\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}\n\nFor invoice_date, maybe normalize to \"2026-07-03\"? The instruction doesn't specify format. I'll keep the original Arabic date string as extracted. Actually, many extraction benchmarks expect the exact text. I'll keep \"3 يوليو 2026\".\n\nReturn only the JSON, no markdown code fences? \"لا تُضِف أي نص آخر\" — don't add any other text. A code fence might count as extra. I'll output raw JSON without fences. Actually a code block is usually fine, but \"أعد فقط كائن JSON\" suggests just the JSON. I'll output plain JSON.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The user wants me to extract fields from an Arabic invoice and return only a JSON object with exactly these keys: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items.\n\nLet me parse the invoice:\n\n- Company name (vendor): شركة دار التقنية التجارية\n- PO Box: 88451, Riyadh 11662, Saudi Arabia\n- VAT number: 310881234500003\n- Invoice type: فاتورة ضريبية (Tax invoice)\n- Invoice number: INV-2026-0847\n- Invoice date: 3 يوليو 2026 (July 3, 2026)\n- Customer: رسوخ فنتشرز (Rusukh Ventures), Al Olaya district, Riyadh\n- Line items:\n  1. Business laptop TX-14, qty 4 × 5,200.00 SAR = 20,800.00 SAR\n  2. USB-C dual-screen docking station, qty 6 × 480.00 SAR = 2,880.00 SAR\n  3. Annual on-site support package, qty 1 × 7,500.00 SAR = 7,500.00 SAR\n- Subtotal (excl. VAT): 31,180.00 SAR\n- VAT (15%): 4,677.00 SAR\n- Total (incl. VAT): 35,857.00 SAR\n\nFields:\n- invoice_number: \"INV-2026-0847\"\n- invoice_date: \"3 يوليو 2026\" — should I keep in Arabic or convert? The instruction says extract. I'll keep as in the invoice: \"3 يوليو 2026\". Or maybe format as ISO? The instruction says extract the fields, so keeping the original text is safest. Could also do \"2026-07-03\". Hmm. I'll keep the original string \"3 يوليو 2026\" since that's what's in the document. Actually, many extraction tasks prefer normalized dates. But the instruction says \"استخراج الحقول\" (extract the fields), so I'll keep the original value. I could also add ISO but that changes data. I'll keep original.\n- vendor: \"شركة دار التقنية التجارية\"\n- total_incl_vat: 35857.00 — as number? The field name suggests numeric. I'll use 35857.00 (or \"35,857.00\"). As JSON number: 35857.00. Could also be string \"35,857.00\". I'll use number 35857.00.\n- currency: The currency is ريال (SAR). I could use \"SAR\" or \"ريال\". Since the invoice is in Arabic, maybe \"SAR\" is more standard. Hmm. The currency key — \"ريال\" is the Arabic word. I'll use \"SAR\" as it's the standard code, but the invoice says \"ريال\". Let me think — the instruction says extract from the invoice. The invoice uses \"ريال\". I could use \"SAR\" since it's a Saudi invoice. I'll go with \"SAR\" as it's unambiguous... Actually, to be faithful to extraction, \"ريال\" might be better. Hmm. I'll use \"SAR\" — it's the ISO code for Saudi Riyal and clearer in JSON. Either is defensible. Let me use \"SAR\".\n\nActually, since the user asked in Arabic and the invoice is Arabic, maybe \"ريال\" would be more consistent. But SAR is the standard representation. I'll go with \"SAR\".\n\nHmm, let me reconsider. The task: \"استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON\" — extract the following fields from the invoice and return only a JSON object. So values should reflect the invoice content. Currency in the invoice is \"ريال\" (SAR). I'll use \"SAR\" as it's a cleaner code. Both work. Final: \"SAR\".\n\n- num_line_items: 3\n\nOutput only JSON, no other text.\n\nJSON:\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 يوليو 2026\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}\n\nFor invoice_date, maybe normalize to \"2026-07-03\"? The instruction doesn't specify format. I'll keep the original Arabic date string as extracted. Actually, many extraction benchmarks expect the exact text. I'll keep \"3 يوليو 2026\".\n\nReturn only the JSON, no markdown code fences? \"لا تُضِف أي نص آخر\" — don't add any other text. A code fence might count as extra. I'll output raw JSON without fences. Actually a code block is usually fine, but \"أعد فقط كائن JSON\" suggests just the JSON. I'll output plain JSON.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 380,
+    "completion_tokens": 1168,
+    "total_tokens": 1548,
+    "cost": 0.0053064,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 320,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0053064,
+     "upstream_inference_prompt_cost": 0.0001672,
+     "upstream_inference_completions_cost": 0.0051392
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 1090,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

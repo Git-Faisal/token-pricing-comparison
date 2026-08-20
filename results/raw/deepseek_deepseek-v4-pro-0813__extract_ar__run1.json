@@ -1,0 +1,67 @@
+{
+ "model": "deepseek/deepseek-v4-pro-0813",
+ "task": "extract_ar",
+ "run": 1,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "استخرج الحقول التالية من الفاتورة أدناه وأعد فقط كائن JSON يحتوي على هذه المفاتيح بالضبط: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. لا تُضِف أي نص آخر.\n\n---\n\nشركة دار التقنية التجارية\nص.ب 88451، الرياض 11662، المملكة العربية السعودية\nالرقم الضريبي: 310881234500003\n\nفاتورة ضريبية\n\nرقم الفاتورة: INV-2026-0847\nتاريخ الفاتورة: 3 يوليو 2026\nالعميل: رسوخ فنتشرز، حي العليا، الرياض\n\nالبنود:\n1. حاسوب محمول للأعمال، طراز TX-14 ............ الكمية 4 × 5,200.00 ريال = 20,800.00 ريال\n2. محطة إرساء USB-C بشاشتين ..... الكمية 6 × 480.00 ريال = 2,880.00 ريال\n3. باقة الدعم السنوي في الموقع .......... الكمية 1 × 7,500.00 ريال = 7,500.00 ريال\n\nالإجمالي الفرعي (غير شامل الضريبة): 31,180.00 ريال\nضريبة القيمة المضافة (15%): 4,677.00 ريال\nالإجمالي (شامل الضريبة): 35,857.00 ريال\n\nشروط الدفع: 30 يوماً صافي. تحويل بنكي فقط.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787188598-vj9D9wI3A98UngmMppnn",
+   "object": "chat.completion",
+   "created": 1787188598,
+   "model": "deepseek/deepseek-v4-pro-0813",
+   "provider": "DeepSeek",
+   "system_fingerprint": "a307abda487cd1b463329ccb945ce396",
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 يوليو 2026\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}",
+      "refusal": null,
+      "reasoning": "We need answer only JSON object. Need extract fields: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. From invoice.\n\nInvoice number: INV-2026-0847. invoice_date: 3 يوليو 2026 (Arabic). vendor: شركة دار التقنية التجارية. total_incl_vat: 35,857.00 maybe numeric? currency: ريال maybe SAR? The invoice says ريال سعودي? Need infer currency. \"ريال\" Saudi Riyal. Should output currency maybe \"SAR\" or \"ريال سعودي\"? User asks JSON with keys exactly. Need likely currency code? Invoice has ريال. Could use \"SAR\". But to be faithful extracted \"ريال\" maybe. Need no additional text. num_line_items: 3.\n\nNeed decide values formatting. total_incl_vat maybe \"35857.00\" or 35857.00. JSON number can be 35857.00. currency \"SAR\". invoice_date maybe \"2026-07-03\"? The original date is Arabic \"3 يوليو 2026\". Should we preserve? Extracted likely as original. Need maybe convert? The instruction \"استخرج الحقول\" from invoice, return JSON. Use exact values from invoice. invoice_date should be \"3 يوليو 2026\" maybe. But could be \"2026-07-03\" if structured. Need decide.\n\nWe need output only JSON object. We can include Arabic values. Let's produce:\n\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 يوليو 2026\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}\n\nPotential issue: currency should be \"ريال\" not SAR. The invoice says \"ريال\" and \"المملكة العربية السعودية\" so SAR, but if asked \"currency\", maybe accepted as \"ريال سعودي\" or \"SAR\". We can use \"SAR\" as standard. But maybe extraction wants currency as mentioned? \"currency\" not directly mentioned but \"ريال\". Let's see: \"الإجمالي (شامل الضريبة): 35,857.00 ريال\" so currency is \"ريال\". In JSON, value could be \"ريال\". But many parsers prefer code. The prompt asks \"استخرج الحقول ... currency\" not specify convert. \"العملة\" perhaps from invoice is \"ريال سعودي\" or just \"ريال\". Use \"SAR\" likely OK. However if scoring exact? Hmm.\n\nNeed maybe use \"ريال\" as literal to avoid assumption. But keys include currency, maybe expected \"SAR\" because Saudi invoice. Let's assess.\n\nThey gave \"المملكة العربية السعودية\" and \"الرقم الضريبي\". \"ريال\" appears. If asked currency, maybe the value should be \"ريال سعودي\" or \"SAR\". Most extraction tasks: currency code from document. Could be \"SAR\" (ISO code) if recognized. But \"فقط كائن JSON\" no text. The desired oververbosity 5.\n\nPotential need num_line_items as number not string. Fine.\n\nNeed maybe total_incl_vat as string \"35,857.00\" because includes comma. But JSON number can't include comma. Use 35857.00.\n\nNeed check line items: The invoice lists 3 items. Good.\n\nLet's output only JSON. Ensure valid JSON with Arabic. No trailing comments.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "We need answer only JSON object. Need extract fields: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. From invoice.\n\nInvoice number: INV-2026-0847. invoice_date: 3 يوليو 2026 (Arabic). vendor: شركة دار التقنية التجارية. total_incl_vat: 35,857.00 maybe numeric? currency: ريال maybe SAR? The invoice says ريال سعودي? Need infer currency. \"ريال\" Saudi Riyal. Should output currency maybe \"SAR\" or \"ريال سعودي\"? User asks JSON with keys exactly. Need likely currency code? Invoice has ريال. Could use \"SAR\". But to be faithful extracted \"ريال\" maybe. Need no additional text. num_line_items: 3.\n\nNeed decide values formatting. total_incl_vat maybe \"35857.00\" or 35857.00. JSON number can be 35857.00. currency \"SAR\". invoice_date maybe \"2026-07-03\"? The original date is Arabic \"3 يوليو 2026\". Should we preserve? Extracted likely as original. Need maybe convert? The instruction \"استخرج الحقول\" from invoice, return JSON. Use exact values from invoice. invoice_date should be \"3 يوليو 2026\" maybe. But could be \"2026-07-03\" if structured. Need decide.\n\nWe need output only JSON object. We can include Arabic values. Let's produce:\n\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 يوليو 2026\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}\n\nPotential issue: currency should be \"ريال\" not SAR. The invoice says \"ريال\" and \"المملكة العربية السعودية\" so SAR, but if asked \"currency\", maybe accepted as \"ريال سعودي\" or \"SAR\". We can use \"SAR\" as standard. But maybe extraction wants currency as mentioned? \"currency\" not directly mentioned but \"ريال\". Let's see: \"الإجمالي (شامل الضريبة): 35,857.00 ريال\" so currency is \"ريال\". In JSON, value could be \"ريال\". But many parsers prefer code. The prompt asks \"استخرج الحقول ... currency\" not specify convert. \"العملة\" perhaps from invoice is \"ريال سعودي\" or just \"ريال\". Use \"SAR\" likely OK. However if scoring exact? Hmm.\n\nNeed maybe use \"ريال\" as literal to avoid assumption. But keys include currency, maybe expected \"SAR\" because Saudi invoice. Let's assess.\n\nThey gave \"المملكة العربية السعودية\" and \"الرقم الضريبي\". \"ريال\" appears. If asked currency, maybe the value should be \"ريال سعودي\" or \"SAR\". Most extraction tasks: currency code from document. Could be \"SAR\" (ISO code) if recognized. But \"فقط كائن JSON\" no text. The desired oververbosity 5.\n\nPotential need num_line_items as number not string. Fine.\n\nNeed maybe total_incl_vat as string \"35,857.00\" because includes comma. But JSON number can't include comma. Use 35857.00.\n\nNeed check line items: The invoice lists 3 items. Good.\n\nLet's output only JSON. Ensure valid JSON with Arabic. No trailing comments.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 431,
+    "completion_tokens": 836,
+    "total_tokens": 1267,
+    "cost": 0.00387948,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00387948,
+     "upstream_inference_prompt_cost": 0.00056892,
+     "upstream_inference_completions_cost": 0.00331056
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 762,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

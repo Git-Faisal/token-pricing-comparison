@@ -1,0 +1,159 @@
+{
+ "model": "google/gemini-3.1-pro-preview",
+ "task": "agentic_ar",
+ "run": 1,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "باستخدام أداة search_flights، ابحث عن أرخص رحلة طيران من الرياض (RUH) إلى لندن (LHR) بتاريخ 2026-09-10، ثم أجب في جملة واحدة باسم شركة الطيران والسعر بالدولار الأمريكي."
+  },
+  {
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "call_24201",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"date\":\"2026-09-10\",\"origin\":\"RUH\",\"destination\":\"LHR\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "call_24201",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787192601-oFkOcxTHm4ujNUYE72KH",
+   "object": "chat.completion",
+   "created": 1787192601,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": null,
+      "refusal": null,
+      "reasoning": "**Finding Cheapest Flight**\n\nI am currently analyzing flight options for the Riyadh to London route on September 10, 2026, with the primary objective of identifying the most economical fare and the associated airline. This focused effort aims to deliver a clear, concise output detailing the cheapest option available.\n\n",
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "call_24201",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"date\":\"2026-09-10\",\"origin\":\"RUH\",\"destination\":\"LHR\"}"
+        }
+       }
+      ],
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Finding Cheapest Flight**\n\nI am currently analyzing flight options for the Riyadh to London route on September 10, 2026, with the primary objective of identifying the most economical fare and the associated airline. This focused effort aims to deliver a clear, concise output detailing the cheapest option available.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       },
+       {
+        "type": "reasoning.encrypted",
+        "data": "AY89a18j+ry+MoUlOD3MCNgxEtp7Xj8S3O/2Ef08/zdoaAu3pO+rPvk/jojOFdja2U/674DfL69uk0cuwdCz3lhv0keqWBDLMEyzr6PzwZJPgJuUOtRipuyBwLFGua10SXa/yxeVo98fpNSO0z0FQTqOgDiKYlXqt/A8ihWJxfmGAPMi6jmbvF0JISwdKvxMIHqttYXTGvbfoh/Fqu8gtbv5vD0FGoFUIO1riYM9RHc8vWrrWfzAuNyOA06DwmuUzmIzsfoQPwpNukExDFonJgqcW3xv7E+zagKgLNA3Lq9DBRCWOGd+hDlH95ZepXD//7Flw1v1t2/gKq2SWEeSegtnmt11elDF+FGax3dN0ujLa73WdE05WmnIQpL1Vr0AdHj1MTSZbvhZg4S8OASQHFpjg63gQuF/qG36XnCIh/L9Q/kD8o8Mw1lVg3lUhMawZaNd/e88HQ/PgbvvDUVdnN14DydDYzJaWPhlpGNlUE8+BQaTFKl3DgZUVzzLuI/dGxi6SKHDXj3V9Hy0QMZPOzGPkc1Icj10+V7ucmH1Sf9pQjQQqPm6fL/cVUacjYb5Ncg7jNnLYBQOTDpkd6Z1yzaMGgAmg82j21kHf2bUEzPVj2jyLWtGtUUTz4qedyF554raoduTBEeheWRDgDBE03G9+oke44OwC35JMQtjVPxK0VBvxg+aZZ/ylk6xOyEsd32nJYq3qrYz2c3oF698OmioHxCVCPChdzg8TRmt8yL5/HjKR3YuB8b26MJkbabRE3ZpUe648u7fa8ub+oZPWsWH7SXQflf7Raeto3Rjg32Tj4ZDEn+ssRPC8KrUJx7hbUvAeHHYJcuTGdeY3dzTnS9LCV904zYHxLNEMlGll0tHm1AN+18EgpsNADF2/P8uQrzTxCeVdtZV2SvmgnRo7iENjVcYAUZVPow9CGxBNQGx8QidZKeHR7K6UTAbvgC/1Zl0bpO6XOdJVPABoVCf1O5yR0HzsK4ktmjl6yhgeKVtHb0KuG16N1wPSlbMsZLAKCHIkqvsFTI4CYW//6c12PSqhQ48TsK9aX1iQENyK2JDL1EecfVQVlh881zTbFNLmXgHDnRnW/HEHZNjY2I7gVw3FTFHnnyXzK0Hc2UJNkCKsEzZjwbA6nsXfvHJ4GhilJbwoOvTFpyLVFkjXVKofsDNKsxsbMt/0ohrY3cP7O1qPVVe05FaA1YDN/85E8Pgf13M9xy11SW69yxLBBx2TVZGsHmuMtMCU0tJoNVCKs9hokUJnHMdDD1qeYtcssNKrm1/ijD278PDRHZDpbV12+Rn6Kz5wOd8bjsP211E8f4DXELBL5gf82Etooc=",
+        "format": "google-gemini-v1",
+        "id": "call_24201",
+        "index": 1
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 153,
+    "completion_tokens": 268,
+    "total_tokens": 421,
+    "cost": 0.003522,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.003522,
+     "upstream_inference_prompt_cost": 0.000306,
+     "upstream_inference_completions_cost": 0.003216
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 229,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787192606-JMfLpuUjwxGo0YeEfQSJ",
+   "object": "chat.completion",
+   "created": 1787192606,
+   "model": "google/gemini-3.1-pro-preview",
+   "provider": "Google",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "STOP",
+     "message": {
+      "role": "assistant",
+      "content": "أرخص رحلة طيران متوفرة هي عبر شركة Wizz Air بسعر يبلغ 189 دولاراً أمريكياً.",
+      "refusal": null,
+      "reasoning": "**Finding Cheapest Flight**\n\nI am currently focused on identifying the most economical flight option from Riyadh to London on September 10, 2026. My analysis aims to pinpoint the specific airline and its associated lowest fare to fulfill your request.\n\n**Determining Optimal Airfare**\n\nI've analyzed the flight data and identified Wizz Air as the most cost-effective option at $189. I am now formulating the response in Arabic, ensuring it meets the single-sentence constraint.\n\n",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "**Finding Cheapest Flight**\n\nI am currently focused on identifying the most economical flight option from Riyadh to London on September 10, 2026. My analysis aims to pinpoint the specific airline and its associated lowest fare to fulfill your request.\n\n**Determining Optimal Airfare**\n\nI've analyzed the flight data and identified Wizz Air as the most cost-effective option at $189. I am now formulating the response in Arabic, ensuring it meets the single-sentence constraint.\n\n",
+        "format": "google-gemini-v1",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 238,
+    "completion_tokens": 484,
+    "total_tokens": 722,
+    "cost": 0.006284,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.006284,
+     "upstream_inference_prompt_cost": 0.000476,
+     "upstream_inference_completions_cost": 0.005808
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 454,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

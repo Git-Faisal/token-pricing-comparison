@@ -1,0 +1,152 @@
+{
+ "model": "deepseek/deepseek-v4-pro-0813",
+ "task": "agentic_ar",
+ "run": 1,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "باستخدام أداة search_flights، ابحث عن أرخص رحلة طيران من الرياض (RUH) إلى لندن (LHR) بتاريخ 2026-09-10، ثم أجب في جملة واحدة باسم شركة الطيران والسعر بالدولار الأمريكي."
+  },
+  {
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "call_00_13XRDc6xzg2EQq0VduQk0576",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"origin\": \"RUH\", \"destination\": \"LHR\", \"date\": \"2026-09-10\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "call_00_13XRDc6xzg2EQq0VduQk0576",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787190948-mJUndJP6NDyahihVAuXZ",
+   "object": "chat.completion",
+   "created": 1787190948,
+   "model": "deepseek/deepseek-v4-pro-0813",
+   "provider": "DeepSeek",
+   "system_fingerprint": "a307abda487cd1b463329ccb945ce396",
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "tool_calls",
+     "message": {
+      "role": "assistant",
+      "content": null,
+      "refusal": null,
+      "reasoning": "The user wants me to search for the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10 using search_flights, then answer in one sentence with airline name and price in USD. Let me call the tool.",
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "call_00_13XRDc6xzg2EQq0VduQk0576",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"origin\": \"RUH\", \"destination\": \"LHR\", \"date\": \"2026-09-10\"}"
+        }
+       }
+      ],
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The user wants me to search for the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10 using search_flights, then answer in one sentence with airline name and price in USD. Let me call the tool.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 509,
+    "completion_tokens": 139,
+    "total_tokens": 648,
+    "cost": 0.000732336,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 384,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000732336,
+     "upstream_inference_prompt_cost": 0.000181896,
+     "upstream_inference_completions_cost": 0.00055044
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 55,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787190951-psgBxzp4gWJ3X4ElK2Zj",
+   "object": "chat.completion",
+   "created": 1787190951,
+   "model": "deepseek/deepseek-v4-pro-0813",
+   "provider": "DeepSeek",
+   "system_fingerprint": "a307abda487cd1b463329ccb945ce396",
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "أرخص رحلة طيران من الرياض إلى لندن بتاريخ 2026-09-10 هي عبر شركة Wizz Air بسعر 189 دولارًا أمريكيًا.",
+      "refusal": null,
+      "reasoning": "The cheapest is Wizz Air at $189.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The cheapest is Wizz Air at $189.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 756,
+    "completion_tokens": 51,
+    "total_tokens": 807,
+    "cost": 0.00038324,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 640,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.00038324,
+     "upstream_inference_prompt_cost": 0.00018128,
+     "upstream_inference_completions_cost": 0.00020196
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 10,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

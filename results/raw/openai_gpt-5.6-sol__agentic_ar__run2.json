@@ -1,0 +1,136 @@
+{
+ "model": "openai/gpt-5.6-sol",
+ "task": "agentic_ar",
+ "run": 2,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "باستخدام أداة search_flights، ابحث عن أرخص رحلة طيران من الرياض (RUH) إلى لندن (LHR) بتاريخ 2026-09-10، ثم أجب في جملة واحدة باسم شركة الطيران والسعر بالدولار الأمريكي."
+  },
+  {
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "call_P8JWIqKqFVWX4x7AliN3DCox",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"origin\":\"RUH\",\"destination\":\"LHR\",\"date\":\"2026-09-10\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "call_P8JWIqKqFVWX4x7AliN3DCox",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787194485-UH3j7VzM16MpivAdtXap",
+   "object": "chat.completion",
+   "created": 1787194485,
+   "model": "openai/gpt-5.6-sol",
+   "provider": "OpenAI",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "completed",
+     "message": {
+      "role": "assistant",
+      "content": null,
+      "refusal": null,
+      "reasoning": null,
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "call_P8JWIqKqFVWX4x7AliN3DCox",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"origin\":\"RUH\",\"destination\":\"LHR\",\"date\":\"2026-09-10\"}"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 161,
+    "completion_tokens": 34,
+    "total_tokens": 195,
+    "cost": 0.0009125,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0009125,
+     "upstream_inference_prompt_cost": 0.0004025,
+     "upstream_inference_completions_cost": 0.00051
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787194488-8muZc09vR2SffC3FOSud",
+   "object": "chat.completion",
+   "created": 1787194488,
+   "model": "openai/gpt-5.6-sol",
+   "provider": "OpenAI",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "completed",
+     "message": {
+      "role": "assistant",
+      "content": "أرخص رحلة هي مع **Wizz Air** بسعر **189 دولارًا أمريكيًا**.",
+      "refusal": null,
+      "reasoning": null
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 303,
+    "completion_tokens": 26,
+    "total_tokens": 329,
+    "cost": 0.0011475,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0011475,
+     "upstream_inference_prompt_cost": 0.0007575,
+     "upstream_inference_completions_cost": 0.00039
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "model": "openai/gpt-5.6-sol",
+ "task": "extract_en",
+ "run": 2,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "Extract the following fields from the invoice below and return ONLY a JSON object with exactly these keys: invoice_number, invoice_date, vendor, total_incl_vat, currency, num_line_items. Do not include any other text.\n\n---\n\nDAR AL-TEQNIA TRADING CO.\nP.O. Box 88451, Riyadh 11662, Kingdom of Saudi Arabia\nVAT Registration: 310881234500003\n\nTAX INVOICE\n\nInvoice Number: INV-2026-0847\nInvoice Date: 3 July 2026\nCustomer: Rusukh Ventures, Olaya District, Riyadh\n\nLine Items:\n1. Business laptop, model TX-14 ............ Qty 4 x 5,200.00 SAR = 20,800.00 SAR\n2. Docking station, USB-C dual display ..... Qty 6 x 480.00 SAR  =  2,880.00 SAR\n3. Annual on-site support package .......... Qty 1 x 7,500.00 SAR =  7,500.00 SAR\n\nSubtotal (excl. VAT): 31,180.00 SAR\nVAT (15%): 4,677.00 SAR\nTOTAL (incl. VAT): 35,857.00 SAR\n\nPayment terms: Net 30. Bank transfer only.\n"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787192647-jZVYEgiHq6a7QvLDS50f",
+   "object": "chat.completion",
+   "created": 1787192647,
+   "model": "openai/gpt-5.6-sol",
+   "provider": "OpenAI",
+   "system_fingerprint": null,
+   "service_tier": "default",
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "completed",
+     "message": {
+      "role": "assistant",
+      "content": "{\"invoice_number\":\"INV-2026-0847\",\"invoice_date\":\"2026-07-03\",\"vendor\":\"DAR AL-TEQNIA TRADING CO.\",\"total_incl_vat\":35857.00,\"currency\":\"SAR\",\"num_line_items\":3}",
+      "refusal": null,
+      "reasoning": null
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 279,
+    "completion_tokens": 59,
+    "total_tokens": 338,
+    "cost": 0.0015825,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0015825,
+     "upstream_inference_prompt_cost": 0.0006975,
+     "upstream_inference_completions_cost": 0.000885
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

@@ -54,6 +54,54 @@ def _sudoku_prompt_ar(puzzle: str) -> str:
     )
 
 
+ROSTER_SOLUTION = {
+    "sun_day": ["Fahad", "Layla"], "sun_night": ["Noura", "Omar"],
+    "mon_day": ["Fahad", "Salem"], "mon_night": ["Noura", "Omar"],
+    "tue_day": ["Fahad", "Layla"], "tue_night": ["Omar", "Salem"],
+    "wed_day": ["Layla", "Noura"], "wed_night": ["Omar", "Salem"],
+    "thu_day": ["Layla", "Noura"], "thu_night": ["Omar", "Salem"],
+}
+
+ROSTER_PROMPT_EN = """You are the operations manager at Al-Waha Logistics. Build next week's driver roster.
+
+Drivers: Salem, Layla, Fahad, Omar, Noura.
+Shifts: Sunday through Thursday, a day shift and a night shift each day. Every shift is staffed by exactly 2 drivers.
+
+Rules (all must hold):
+1. Exact weekly shift counts: Salem 4, Layla 4, Fahad 3, Omar 5, Noura 4.
+2. Rest rule: a driver who works a night shift cannot work the next morning's day shift.
+3. Refrigerated-cargo rule: every shift needs at least one certified driver. Only Salem, Layla, and Noura are certified.
+4. Night shifts require a forklift licence. Fahad has no forklift licence.
+5. Fahad is unavailable on Wednesday.
+6. Noura and Fahad must never share a shift.
+7. Nobody works both shifts of the same day.
+8. Layla cannot work night shifts (evening classes).
+9. Noura must work exactly 2 night shifts this week.
+10. Salem cannot work the Sunday day shift.
+
+This puzzle has exactly one valid roster. Find it.
+Reply with ONLY a JSON object with exactly these keys: sun_day, sun_night, mon_day, mon_night, tue_day, tue_night, wed_day, wed_night, thu_day, thu_night. Each value is an array of exactly 2 driver names."""
+
+ROSTER_PROMPT_AR = """أنت مدير العمليات في شركة الواحة للخدمات اللوجستية. قم بإعداد جدول مناوبات السائقين للأسبوع القادم.
+
+السائقون: Salem، Layla، Fahad، Omar، Noura.
+المناوبات: من الأحد إلى الخميس، مناوبة نهارية ومناوبة ليلية كل يوم. كل مناوبة يعمل فيها سائقان بالضبط.
+
+القواعد (يجب تحقيقها جميعاً):
+1. عدد المناوبات الأسبوعية بالضبط: Salem 4، Layla 4، Fahad 3، Omar 5، Noura 4.
+2. قاعدة الراحة: السائق الذي يعمل مناوبة ليلية لا يمكنه العمل في المناوبة النهارية لصباح اليوم التالي.
+3. قاعدة البضائع المبردة: كل مناوبة تحتاج إلى سائق معتمد واحد على الأقل. المعتمدون هم Salem وLayla وNoura فقط.
+4. المناوبات الليلية تتطلب رخصة رافعة شوكية. Fahad لا يملك رخصة رافعة شوكية.
+5. Fahad غير متاح يوم الأربعاء.
+6. Noura وFahad لا يجوز أن يعملا في المناوبة نفسها أبداً.
+7. لا يعمل أي سائق في مناوبتي اليوم نفسه.
+8. Layla لا يمكنها العمل في المناوبات الليلية (دروس مسائية).
+9. Noura يجب أن تعمل مناوبتين ليليتين بالضبط هذا الأسبوع.
+10. Salem لا يمكنه العمل في المناوبة النهارية يوم الأحد.
+
+لهذا اللغز جدول صحيح واحد فقط. جِده.
+أجب فقط بكائن JSON يحتوي بالضبط على هذه المفاتيح: sun_day, sun_night, mon_day, mon_night, tue_day, tue_night, wed_day, wed_night, thu_day, thu_night. قيمة كل مفتاح مصفوفة من اسمي سائقين بالضبط."""
+
 FLIGHT_TOOL = {
     "type": "function",
     "function": {
@@ -147,6 +195,22 @@ TASKS = [
         "prompt": _sudoku_prompt_ar(SUDOKU_EXTREME_PUZZLE),
         "max_tokens": 32000,
         "grade": {"kind": "sudoku", "expected": SUDOKU_EXTREME_ANSWER},
+    },
+    {
+        "id": "roster_en",
+        "type": "roster",
+        "lang": "en",
+        "prompt": ROSTER_PROMPT_EN,
+        "max_tokens": 32000,
+        "grade": {"kind": "roster", "expected": ROSTER_SOLUTION},
+    },
+    {
+        "id": "roster_ar",
+        "type": "roster",
+        "lang": "ar",
+        "prompt": ROSTER_PROMPT_AR,
+        "max_tokens": 32000,
+        "grade": {"kind": "roster", "expected": ROSTER_SOLUTION},
     },
     {
         "id": "agentic_en",
