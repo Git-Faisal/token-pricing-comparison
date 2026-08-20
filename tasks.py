@@ -201,7 +201,7 @@ TASKS = [
         "type": "roster",
         "lang": "en",
         "prompt": ROSTER_PROMPT_EN,
-        "max_tokens": 64000,
+        "max_tokens": 128000,
         "grade": {"kind": "roster", "expected": ROSTER_SOLUTION},
     },
     {
@@ -209,7 +209,7 @@ TASKS = [
         "type": "roster",
         "lang": "ar",
         "prompt": ROSTER_PROMPT_AR,
-        "max_tokens": 64000,
+        "max_tokens": 128000,
         "grade": {"kind": "roster", "expected": ROSTER_SOLUTION},
     },
     {
