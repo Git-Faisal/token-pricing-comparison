@@ -13,7 +13,7 @@ API_URL = "https://openrouter.ai/api/v1/chat/completions"
 KEY_PATHS = ["../.openrouter_key", ".openrouter_key"]  # first match wins; or env OPENROUTER_API_KEY
 
 APP_HEADERS = {
-    "HTTP-Referer": "https://github.com/Git-Faisal/llm-unit-economics",
+    "HTTP-Referer": "https://github.com/Git-Faisal/token-pricing-comparison",
     "X-Title": "LLM Unit Economics Experiment",
 }
 
