@@ -24,7 +24,10 @@ MODELS = [
         "id": "anthropic/claude-fable-5",
         "sticker_in": 10.00,   # USD per 1M tokens
         "sticker_out": 50.00,
-        "provider_pin": None,
+        # Pinned to Anthropic first-party after unpinned routing landed on
+        # Google Vertex, whose content filter blocked mundane tasks
+        # (see results/quarantine_vertex_fable.csv and the raw files).
+        "provider_pin": "anthropic",
         "public_tokenizer": None,  # not published
     },
     {
