@@ -10,13 +10,13 @@
  ],
  "responses": [
   {
-   "id": "gen-1787211539-9gHWlxXmA4Uu4BPBBDWg",
+   "id": "gen-1787211727-MPFCmImWRmyctTaQXQwF",
    "object": "chat.completion",
-   "created": 1787211539,
+   "created": 1787211727,
    "model": "anthropic/claude-fable-5",
-   "provider": "Google",
+   "provider": "Anthropic",
    "system_fingerprint": null,
-   "service_tier": null,
+   "service_tier": "default",
    "choices": [
     {
      "index": 0,
@@ -27,24 +27,15 @@
       "role": "assistant",
       "content": "```json\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"2026-07-03\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}\n```",
       "refusal": null,
-      "reasoning": "I should format the response as JSON only.\n\n",
-      "reasoning_details": [
-       {
-        "type": "reasoning.text",
-        "text": "I should format the response as JSON only.\n\n",
-        "format": "anthropic-claude-v1",
-        "index": 0,
-        "signature": "CAIS+wEKhwEIEBACGAIqQKncfsRkifP+XVoOIf1KrAuArQQHQOjJih603I0moR/akszhYGrIHY0Aig1EXvOI/5FinK4E9iWFO78sVyhIDrMyDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nWgw3MTI4MzU2MDQyNzJyECJLbBrgvFNLoBsBhKRPN7qIAQESDGFIid5H36bkDsoTmxoMw1yHoyiMsliKTElpIjBSfjj+5d/SL3Zvo5PWc5ZXKpOfd2fOrm8tglSWKgzJjb+tu+TWDv27hekCjWhu/3sqIeDhWsHrasCV+of6hg4TvqOqGc//mmDVXC9y2+9T9OmECBgB"
-       }
-      ]
+      "reasoning": null
      }
     }
    ],
    "usage": {
     "prompt_tokens": 536,
-    "completion_tokens": 116,
-    "total_tokens": 652,
-    "cost": 0.01116,
+    "completion_tokens": 107,
+    "total_tokens": 643,
+    "cost": 0.01071,
     "is_byok": false,
     "prompt_tokens_details": {
      "cached_tokens": 0,
@@ -53,12 +44,12 @@
      "video_tokens": 0
     },
     "cost_details": {
-     "upstream_inference_cost": 0.01116,
+     "upstream_inference_cost": 0.01071,
      "upstream_inference_prompt_cost": 0.00536,
-     "upstream_inference_completions_cost": 0.0058
+     "upstream_inference_completions_cost": 0.00535
     },
     "completion_tokens_details": {
-     "reasoning_tokens": 9,
+     "reasoning_tokens": 0,
      "image_tokens": 0,
      "audio_tokens": 0
     }

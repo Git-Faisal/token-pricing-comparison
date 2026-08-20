@@ -10,13 +10,13 @@
  ],
  "responses": [
   {
-   "id": "gen-1787211506-nS33sQqsSYHezYV6ryaq",
+   "id": "gen-1787211681-EqVxs8qOoaiv0rWJVgTk",
    "object": "chat.completion",
-   "created": 1787211506,
+   "created": 1787211681,
    "model": "anthropic/claude-fable-5",
-   "provider": "Google",
+   "provider": "Anthropic",
    "system_fingerprint": null,
-   "service_tier": null,
+   "service_tier": "default",
    "choices": [
     {
      "index": 0,
@@ -25,7 +25,7 @@
      "native_finish_reason": "end_turn",
      "message": {
       "role": "assistant",
-      "content": "1. SAR 84.6 million\n2. 94.2%\n3. May 14, 2026",
+      "content": "1. **Revenue in Q2 2026:** SAR 84.6 million\n2. **On-time delivery rate:** 94.2%\n3. **Jeddah hub opening date:** May 14, 2026",
       "refusal": null,
       "reasoning": null
      }
@@ -33,9 +33,9 @@
    ],
    "usage": {
     "prompt_tokens": 707,
-    "completion_tokens": 31,
-    "total_tokens": 738,
-    "cost": 0.00862,
+    "completion_tokens": 69,
+    "total_tokens": 776,
+    "cost": 0.01052,
     "is_byok": false,
     "prompt_tokens_details": {
      "cached_tokens": 0,
@@ -44,9 +44,9 @@
      "video_tokens": 0
     },
     "cost_details": {
-     "upstream_inference_cost": 0.00862,
+     "upstream_inference_cost": 0.01052,
      "upstream_inference_prompt_cost": 0.00707,
-     "upstream_inference_completions_cost": 0.00155
+     "upstream_inference_completions_cost": 0.00345
     },
     "completion_tokens_details": {
      "reasoning_tokens": 0,

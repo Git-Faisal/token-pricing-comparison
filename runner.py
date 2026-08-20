@@ -36,7 +36,7 @@ RAW_DIR = os.path.join(RESULTS_DIR, "raw")
 CSV_PATH = os.path.join(RESULTS_DIR, "results.csv")
 
 CSV_FIELDS = [
-    "timestamp", "model_label", "model_id", "task_id", "task_type", "lang", "run",
+    "timestamp", "model_label", "model_id", "task_id", "task_type", "lang", "run", "max_tokens",
     "provider", "prompt_tokens", "completion_tokens", "reasoning_tokens",
     "cached_tokens", "total_tokens", "cost_usd", "latency_s", "finish_reason",
     "turns", "tool_used", "success", "answer_excerpt", "raw_file",
@@ -218,7 +218,7 @@ def run_cell(key: str, model: dict, task: dict, run_idx: int) -> dict:
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "model_label": model["label"], "model_id": model["id"],
         "task_id": task["id"], "task_type": task["type"], "lang": task["lang"],
-        "run": run_idx, "provider": provider,
+        "run": run_idx, "max_tokens": task["max_tokens"], "provider": provider,
         **{k: totals[k] for k in ("prompt_tokens", "completion_tokens", "reasoning_tokens",
                                   "cached_tokens", "total_tokens")},
         "cost_usd": round(totals["cost_usd"], 8),

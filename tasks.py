@@ -169,7 +169,7 @@ TASKS = [
         "type": "sudoku_moderate",
         "lang": "en",
         "prompt": _sudoku_prompt_en(SUDOKU_MODERATE_PUZZLE),
-        "max_tokens": 16000,
+        "max_tokens": 128000,
         "grade": {"kind": "sudoku", "expected": SUDOKU_MODERATE_ANSWER},
     },
     {
@@ -177,7 +177,7 @@ TASKS = [
         "type": "sudoku_moderate",
         "lang": "ar",
         "prompt": _sudoku_prompt_ar(SUDOKU_MODERATE_PUZZLE),
-        "max_tokens": 16000,
+        "max_tokens": 128000,
         "grade": {"kind": "sudoku", "expected": SUDOKU_MODERATE_ANSWER},
     },
     {
@@ -185,7 +185,7 @@ TASKS = [
         "type": "sudoku_extreme",
         "lang": "en",
         "prompt": _sudoku_prompt_en(SUDOKU_EXTREME_PUZZLE),
-        "max_tokens": 32000,
+        "max_tokens": 128000,
         "grade": {"kind": "sudoku", "expected": SUDOKU_EXTREME_ANSWER},
     },
     {
@@ -193,7 +193,7 @@ TASKS = [
         "type": "sudoku_extreme",
         "lang": "ar",
         "prompt": _sudoku_prompt_ar(SUDOKU_EXTREME_PUZZLE),
-        "max_tokens": 32000,
+        "max_tokens": 128000,
         "grade": {"kind": "sudoku", "expected": SUDOKU_EXTREME_ANSWER},
     },
     {

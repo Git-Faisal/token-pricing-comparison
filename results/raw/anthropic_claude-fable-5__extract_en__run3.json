@@ -10,13 +10,13 @@
  ],
  "responses": [
   {
-   "id": "gen-1787211535-BXYiGx9H36DRo3SID8l2",
+   "id": "gen-1787211720-J92gOKytt3390EpUY07R",
    "object": "chat.completion",
-   "created": 1787211535,
+   "created": 1787211720,
    "model": "anthropic/claude-fable-5",
-   "provider": "Google",
+   "provider": "Anthropic",
    "system_fingerprint": null,
-   "service_tier": null,
+   "service_tier": "default",
    "choices": [
     {
      "index": 0,
@@ -25,8 +25,8 @@
      "native_finish_reason": "refusal",
      "message": {
       "role": "assistant",
-      "content": "```json\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"3 July 2026\",\n  \"vendor\": \"DAR AL-TEQNIA TRADING CO.\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num",
-      "refusal": "This request triggered restrictions on violative cyber content and was blocked under Anthropic's Usage Policy. To learn more, see https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback.",
+      "content": null,
+      "refusal": "This request triggered restrictions on violative cyber content and was blocked under Anthropic's Usage Policy. To learn more, see https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback. API integrators: you can reduce refusals for your users by configuring a fallback model — see https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
       "reasoning": "This looks like a straightforward extraction task.\n\n",
       "reasoning_details": [
        {
@@ -34,7 +34,7 @@
         "text": "This looks like a straightforward extraction task.\n\n",
         "format": "anthropic-claude-v1",
         "index": 0,
-        "signature": "CAIS/AEKhwEIEBACGAIqQEuD3l36lJ9IVVkuzpI3tvasRYqZh10hhrS3TdCsJ5kxoZ4Jk1vPOIFyi0rYXYyvcHGutw44iEgBk8CqRGH8lY8yDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nWgw3MTI4MzU2MDQyNzJyECJLbBrgvFNLoBsBhKRPN7qIAQESDKYjGqNzIrfFiCW8/BoMexjDrcMvVLC4PXWbIjCeDGoUjyEfvt3FAQ+OxNk1HnihIukdo9Il0vIf6C5lO4pE8SI2/qLXWIhdI39Rd3QqIpFChhma3L7jCHCekX+gUccxOmKr1tdP5682hRYF4JsmE4sYAQ=="
+        "signature": "CAISmQIKpAEIEBgCKkBLg95d+pSfSFVZLs6SN7b2rEWKmYddIYa0t03QrCeZMaGeCZNbzziBcotK2F2Mr3BxrrcOOIhIAZPAqkRh/JWPMg5jbGF1ZGUtZmFibGUtNTgBQgh0aGlua2luZ1okMGQ5ODNmM2YtNDlmYS00YTQ2LTgyNTQtYjFiYjI0OTFhMmE5chAGJGOwEGjzlAlrDNvAOvUfiAEBqAHP35rUBhIMUU1x7SgVg66cVZo7GgwjBHmdUyA4+tYqJeAiMN9WItHmGpZNHUxUDkOaQ6eM2Fyau0GCBkgnwUgMDJ+herUFQzAweLIAXd4aa9HKeCoie7atWGQ+OPvgInk6RYECbIvvPPaNJuAz2CPr82/xziWP2xgB"
        }
       ]
      }
@@ -42,9 +42,9 @@
    ],
    "usage": {
     "prompt_tokens": 440,
-    "completion_tokens": 117,
-    "total_tokens": 557,
-    "cost": 0.01025,
+    "completion_tokens": 9,
+    "total_tokens": 449,
+    "cost": 0.00485,
     "is_byok": false,
     "prompt_tokens_details": {
      "cached_tokens": 0,
@@ -53,9 +53,9 @@
      "video_tokens": 0
     },
     "cost_details": {
-     "upstream_inference_cost": 0.01025,
+     "upstream_inference_cost": 0.00485,
      "upstream_inference_prompt_cost": 0.0044,
-     "upstream_inference_completions_cost": 0.00585
+     "upstream_inference_completions_cost": 0.00045
     },
     "completion_tokens_details": {
      "reasoning_tokens": 9,

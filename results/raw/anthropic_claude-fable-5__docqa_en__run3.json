@@ -10,13 +10,13 @@
  ],
  "responses": [
   {
-   "id": "gen-1787211512-4D78zKlN3rSnoUHu98Qz",
+   "id": "gen-1787211692-enFptN0Y2NQsZ05iyU45",
    "object": "chat.completion",
-   "created": 1787211512,
+   "created": 1787211692,
    "model": "anthropic/claude-fable-5",
-   "provider": "Google",
+   "provider": "Anthropic",
    "system_fingerprint": null,
-   "service_tier": null,
+   "service_tier": "default",
    "choices": [
     {
      "index": 0,

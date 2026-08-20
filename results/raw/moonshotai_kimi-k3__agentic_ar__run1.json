@@ -1,0 +1,152 @@
+{
+ "model": "moonshotai/kimi-k3",
+ "task": "agentic_ar",
+ "run": 1,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "باستخدام أداة search_flights، ابحث عن أرخص رحلة طيران من الرياض (RUH) إلى لندن (LHR) بتاريخ 2026-09-10، ثم أجب في جملة واحدة باسم شركة الطيران والسعر بالدولار الأمريكي."
+  },
+  {
+   "role": "assistant",
+   "content": "",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "search_flights_0",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"date\": \"2026-09-10\", \"destination\": \"LHR\", \"origin\": \"RUH\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "search_flights_0",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787214327-JJhZGSvf3lDb9y1OVX7V",
+   "object": "chat.completion",
+   "created": 1787214327,
+   "model": "moonshotai/kimi-k3",
+   "provider": "Moonshot AI",
+   "system_fingerprint": null,
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "tool_calls",
+     "message": {
+      "role": "assistant",
+      "content": null,
+      "refusal": null,
+      "reasoning": "The user wants me to search for the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10, then answer in one sentence with the airline name and price in USD.\n\nLet me call the search_flights tool.",
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "search_flights_0",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"date\": \"2026-09-10\", \"destination\": \"LHR\", \"origin\": \"RUH\"}"
+        }
+       }
+      ],
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The user wants me to search for the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10, then answer in one sentence with the airline name and price in USD.\n\nLet me call the search_flights tool.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 316,
+    "completion_tokens": 146,
+    "total_tokens": 462,
+    "cost": 0.003138,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.003138,
+     "upstream_inference_prompt_cost": 0.000948,
+     "upstream_inference_completions_cost": 0.00219
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 56,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787214334-aoi253TZSDPMRv4CM9M6",
+   "object": "chat.completion",
+   "created": 1787214334,
+   "model": "moonshotai/kimi-k3",
+   "provider": "Moonshot AI",
+   "system_fingerprint": null,
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "أرخص رحلة طيران من الرياض (RUH) إلى لندن (LHR) بتاريخ 2026-09-10 هي رحلة شركة **Wizz Air** بسعر **189 دولارًا أمريكيًا** (رحلة W6 741 مع توقف واحد).",
+      "refusal": null,
+      "reasoning": "The search returned three flights:\n1. Wizz Air - $189 - 1 stop\n2. Saudia - $432 - direct\n3. British Airways - $511 - direct\n\nThe cheapest is Wizz Air at $189. I should answer in one sentence in Arabic with the airline name and price in USD.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The search returned three flights:\n1. Wizz Air - $189 - 1 stop\n2. Saudia - $432 - direct\n3. British Airways - $511 - direct\n\nThe cheapest is Wizz Air at $189. I should answer in one sentence in Arabic with the airline name and price in USD.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 530,
+    "completion_tokens": 153,
+    "total_tokens": 683,
+    "cost": 0.0031938,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 256,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0031938,
+     "upstream_inference_prompt_cost": 0.0008988,
+     "upstream_inference_completions_cost": 0.002295
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 66,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

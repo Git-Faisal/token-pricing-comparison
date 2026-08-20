@@ -1,0 +1,152 @@
+{
+ "model": "moonshotai/kimi-k3",
+ "task": "agentic_en",
+ "run": 3,
+ "request_messages": [
+  {
+   "role": "user",
+   "content": "Using the search_flights tool, find the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10, then answer in one sentence with the airline and the price in USD."
+  },
+  {
+   "role": "assistant",
+   "content": "I'll search for flights from Riyadh to London on that date.",
+   "tool_calls": [
+    {
+     "type": "function",
+     "index": 0,
+     "id": "search_flights_0",
+     "function": {
+      "name": "search_flights",
+      "arguments": "{\"date\": \"2026-09-10\", \"destination\": \"LHR\", \"origin\": \"RUH\"}"
+     }
+    }
+   ]
+  },
+  {
+   "role": "tool",
+   "tool_call_id": "search_flights_0",
+   "content": "[{\"airline\": \"Wizz Air\", \"flight\": \"W6 741\", \"price_usd\": 189, \"stops\": 1}, {\"airline\": \"Saudia\", \"flight\": \"SV 117\", \"price_usd\": 432, \"stops\": 0}, {\"airline\": \"British Airways\", \"flight\": \"BA 262\", \"price_usd\": 511, \"stops\": 0}]"
+  }
+ ],
+ "responses": [
+  {
+   "id": "gen-1787214313-RzUky8RWXsXKPDZCePfv",
+   "object": "chat.completion",
+   "created": 1787214313,
+   "model": "moonshotai/kimi-k3",
+   "provider": "Moonshot AI",
+   "system_fingerprint": null,
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "tool_calls",
+     "native_finish_reason": "tool_calls",
+     "message": {
+      "role": "assistant",
+      "content": "I'll search for flights from Riyadh to London on that date.",
+      "refusal": null,
+      "reasoning": "The user wants me to find the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10 using the search_flights tool. Let me call it.",
+      "tool_calls": [
+       {
+        "type": "function",
+        "index": 0,
+        "id": "search_flights_0",
+        "function": {
+         "name": "search_flights",
+         "arguments": "{\"date\": \"2026-09-10\", \"destination\": \"LHR\", \"origin\": \"RUH\"}"
+        }
+       }
+      ],
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The user wants me to find the cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10 using the search_flights tool. Let me call it.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 289,
+    "completion_tokens": 146,
+    "total_tokens": 435,
+    "cost": 0.0022767,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 289,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0022767,
+     "upstream_inference_prompt_cost": 8.67e-05,
+     "upstream_inference_completions_cost": 0.00219
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 43,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  },
+  {
+   "id": "gen-1787214320-nEAPsWGKaRi54Ero7w3A",
+   "object": "chat.completion",
+   "created": 1787214320,
+   "model": "moonshotai/kimi-k3",
+   "provider": "Moonshot AI",
+   "system_fingerprint": null,
+   "service_tier": null,
+   "choices": [
+    {
+     "index": 0,
+     "logprobs": null,
+     "finish_reason": "stop",
+     "native_finish_reason": "stop",
+     "message": {
+      "role": "assistant",
+      "content": "The cheapest flight from Riyadh (RUH) to London (LHR) on 2026-09-10 is Wizz Air at $189 USD (flight W6 741, with 1 stop).",
+      "refusal": null,
+      "reasoning": "The search returned three flights:\n- Wizz Air W6 741: $189, 1 stop\n- Saudia SV 117: $432, 0 stops\n- British Airways BA 262: $511, 0 stops\n\nThe cheapest is Wizz Air at $189. I need to answer in one sentence with the airline and price.",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "The search returned three flights:\n- Wizz Air W6 741: $189, 1 stop\n- Saudia SV 117: $432, 0 stops\n- British Airways BA 262: $511, 0 stops\n\nThe cheapest is Wizz Air at $189. I need to answer in one sentence with the airline and price.",
+        "format": "unknown",
+        "index": 0
+       }
+      ]
+     }
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 517,
+    "completion_tokens": 133,
+    "total_tokens": 650,
+    "cost": 0.0021501,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 517,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.0021501,
+     "upstream_inference_prompt_cost": 0.0001551,
+     "upstream_inference_completions_cost": 0.001995
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 73,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ]
+}

@@ -10,23 +10,23 @@
  ],
  "responses": [
   {
-   "id": "gen-1787211528-onPYSYPEDYKKhpTmxYUc",
+   "id": "gen-1787211707-EEN6et4gWhRwz2RD6fcK",
    "object": "chat.completion",
-   "created": 1787211528,
+   "created": 1787211707,
    "model": "anthropic/claude-fable-5",
-   "provider": "Google",
+   "provider": "Anthropic",
    "system_fingerprint": null,
-   "service_tier": null,
+   "service_tier": "default",
    "choices": [
     {
      "index": 0,
      "logprobs": null,
-     "finish_reason": "content_filter",
-     "native_finish_reason": "refusal",
+     "finish_reason": "stop",
+     "native_finish_reason": "end_turn",
      "message": {
       "role": "assistant",
-      "content": "{\"invoice_number\": \"INV-2026-0847\", \"invoice_date\": \"3 July 2026\", \"vendor\": \"DAR AL-TEQ",
-      "refusal": "This request triggered restrictions on violative cyber content and was blocked under Anthropic's Usage Policy. To learn more, see https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback.",
+      "content": "{\"invoice_number\": \"INV-2026-0847\", \"invoice_date\": \"3 July 2026\", \"vendor\": \"DAR AL-TEQNIA TRADING CO.\", \"total_incl_vat\": 35857.00, \"currency\": \"SAR\", \"num_line_items\": 3}",
+      "refusal": null,
       "reasoning": "This looks like a straightforward extraction task.\n\n",
       "reasoning_details": [
        {
@@ -34,7 +34,7 @@
         "text": "This looks like a straightforward extraction task.\n\n",
         "format": "anthropic-claude-v1",
         "index": 0,
-        "signature": "CAIS/AEKhwEIEBACGAIqQEuD3l36lJ9IVVkuzpI3tvasRYqZh10hhrS3TdCsJ5kxoZ4Jk1vPOIFyi0rYXYyvcHGutw44iEgBk8CqRGH8lY8yDmNsYXVkZS1mYWJsZS01OAFCCHRoaW5raW5nWgw3MTI4MzU2MDQyNzJyECJLbBrgvFNLoBsBhKRPN7qIAQESDNLvWqWTjsq2AZrdqhoMB6ku78Yh+RJrlDkNIjCg5Dxw05JlLuQMRP3ldt3ByfrA46/no8QaHbKUT7JtBg5e0xQ/Bo00pvdReeuVrB8qIlUdKAFZFhtkx+S+4PErKjTFBQUflmCvWwoVS0JzWgcMGpgYAQ=="
+        "signature": "CAISmQIKpAEIEBgCKkBLg95d+pSfSFVZLs6SN7b2rEWKmYddIYa0t03QrCeZMaGeCZNbzziBcotK2F2Mr3BxrrcOOIhIAZPAqkRh/JWPMg5jbGF1ZGUtZmFibGUtNTgBQgh0aGlua2luZ1okMGQ5ODNmM2YtNDlmYS00YTQ2LTgyNTQtYjFiYjI0OTFhMmE5chAGJGOwEGjzlAlrDNvAOvUfiAEBqAHC35rUBhIM1ozmMJAllu5oEKmLGgwebE9+0d+pOWu3d0kiMIbpa7vrLjrvti3foi3yitMKMRd5/rwQ772Bkiam4uFfFxhtndqg6XflhWKYGd+sgioiR3p+tMc3nJyWKTEE+AROGDFlyxKgKxZJhUd4SwD93ZGM5hgB"
        }
       ]
      }
@@ -42,9 +42,9 @@
    ],
    "usage": {
     "prompt_tokens": 440,
-    "completion_tokens": 65,
-    "total_tokens": 505,
-    "cost": 0.00765,
+    "completion_tokens": 104,
+    "total_tokens": 544,
+    "cost": 0.0096,
     "is_byok": false,
     "prompt_tokens_details": {
      "cached_tokens": 0,
@@ -53,9 +53,9 @@
      "video_tokens": 0
     },
     "cost_details": {
-     "upstream_inference_cost": 0.00765,
+     "upstream_inference_cost": 0.0096,
      "upstream_inference_prompt_cost": 0.0044,
-     "upstream_inference_completions_cost": 0.00325
+     "upstream_inference_completions_cost": 0.0052
     },
     "completion_tokens_details": {
      "reasoning_tokens": 9,

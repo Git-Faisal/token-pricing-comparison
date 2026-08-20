@@ -10,13 +10,13 @@
  ],
  "responses": [
   {
-   "id": "gen-1787211547-sbaXTRyWMR3cIHycJrwN",
+   "id": "gen-1787211739-LnwQbOlbhQumfthIPEst",
    "object": "chat.completion",
-   "created": 1787211547,
+   "created": 1787211739,
    "model": "anthropic/claude-fable-5",
-   "provider": "Google",
+   "provider": "Anthropic",
    "system_fingerprint": null,
-   "service_tier": null,
+   "service_tier": "default",
    "choices": [
     {
      "index": 0,
@@ -25,17 +25,26 @@
      "native_finish_reason": "end_turn",
      "message": {
       "role": "assistant",
-      "content": "{\"invoice_number\": \"INV-2026-0847\", \"invoice_date\": \"2026-07-03\", \"vendor\": \"شركة دار التقنية التجارية\", \"total_incl_vat\": 35857.00, \"currency\": \"SAR\", \"num_line_items\": 3}",
+      "content": "```json\n{\n  \"invoice_number\": \"INV-2026-0847\",\n  \"invoice_date\": \"2026-07-03\",\n  \"vendor\": \"شركة دار التقنية التجارية\",\n  \"total_incl_vat\": 35857.00,\n  \"currency\": \"SAR\",\n  \"num_line_items\": 3\n}\n```",
       "refusal": null,
-      "reasoning": null
+      "reasoning": "I'm converting the date field, 3 July 2026, into ISO format as 2026-07-03.\n\n",
+      "reasoning_details": [
+       {
+        "type": "reasoning.text",
+        "text": "I'm converting the date field, 3 July 2026, into ISO format as 2026-07-03.\n\n",
+        "format": "anthropic-claude-v1",
+        "index": 0,
+        "signature": "CAISugIKpAEIEBgCKkB5rGgrf6ttKvZDZVNcZPSQlhPGeZwvIM0J14TpirEXq6nop1y2xdS257nnuDblp/7xrjsxrkZw8SqMhoQNEiNjMg5jbGF1ZGUtZmFibGUtNTgBQgh0aGlua2luZ1okMGQ5ODNmM2YtNDlmYS00YTQ2LTgyNTQtYjFiYjI0OTFhMmE5chAGJGOwEGjzlAlrDNvAOvUfiAEBqAHh35rUBhIM1QccqINfKvPMnmPUGgwFblFCO0jhS25fehMiMJYMsbVnXdnxGo1g1uryqhUC/IiCmc8gjh6Gi83NBVyfL3emT2n1Kc1hUMjdZCUDWypD3m8rEU6/cyzwUex9mbffFB9w8tk5TsXOm+40ik66xyvcm7nQzB0Yq3fpqjptN9de1ZHjk0gwTIjijxLxg3gdhgWtihgB"
+       }
+      ]
      }
     }
    ],
    "usage": {
     "prompt_tokens": 536,
-    "completion_tokens": 89,
-    "total_tokens": 625,
-    "cost": 0.00981,
+    "completion_tokens": 135,
+    "total_tokens": 671,
+    "cost": 0.01211,
     "is_byok": false,
     "prompt_tokens_details": {
      "cached_tokens": 0,
@@ -44,12 +53,12 @@
      "video_tokens": 0
     },
     "cost_details": {
-     "upstream_inference_cost": 0.00981,
+     "upstream_inference_cost": 0.01211,
      "upstream_inference_prompt_cost": 0.00536,
-     "upstream_inference_completions_cost": 0.00445
+     "upstream_inference_completions_cost": 0.00675
     },
     "completion_tokens_details": {
-     "reasoning_tokens": 0,
+     "reasoning_tokens": 28,
      "image_tokens": 0,
      "audio_tokens": 0
     }
