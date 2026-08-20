@@ -1,0 +1,221 @@
+model_label,task_id,run,tokenizer,billed_prompt,recount_prompt,prompt_gap,billed_completion,recount_visible_output,reasoning_recountable
+GLM-5.3,docqa_en,1,NONE PUBLIC,467,,,83,,False
+GLM-5.3,docqa_en,2,NONE PUBLIC,467,,,102,,False
+GLM-5.3,docqa_en,3,NONE PUBLIC,467,,,76,,False
+GLM-5.3,docqa_ar,1,NONE PUBLIC,792,,,130,,False
+GLM-5.3,docqa_ar,2,NONE PUBLIC,792,,,132,,False
+GLM-5.3,docqa_ar,3,NONE PUBLIC,792,,,140,,False
+GLM-5.3,extract_en,1,NONE PUBLIC,296,,,263,,False
+GLM-5.3,extract_en,2,NONE PUBLIC,296,,,221,,False
+GLM-5.3,extract_en,3,NONE PUBLIC,296,,,232,,False
+GLM-5.3,extract_ar,1,NONE PUBLIC,380,,,782,,False
+GLM-5.3,extract_ar,2,NONE PUBLIC,380,,,1168,,False
+GLM-5.3,extract_ar,3,NONE PUBLIC,380,,,758,,False
+GLM-5.3,sudoku_moderate_en,1,NONE PUBLIC,137,,,16000,,False
+GLM-5.3,sudoku_moderate_en,2,NONE PUBLIC,137,,,16000,,False
+GLM-5.3,sudoku_moderate_en,3,NONE PUBLIC,137,,,16000,,False
+GLM-5.3,sudoku_moderate_ar,1,NONE PUBLIC,180,,,16000,,False
+GLM-5.3,sudoku_moderate_ar,2,NONE PUBLIC,180,,,16000,,False
+GLM-5.3,sudoku_moderate_ar,3,NONE PUBLIC,180,,,16000,,False
+GLM-5.3,sudoku_extreme_en,1,NONE PUBLIC,131,,,32000,,False
+GLM-5.3,sudoku_extreme_en,2,NONE PUBLIC,131,,,32000,,False
+GLM-5.3,sudoku_extreme_ar,1,NONE PUBLIC,174,,,32000,,False
+GLM-5.3,sudoku_extreme_ar,2,NONE PUBLIC,174,,,32000,,False
+GLM-5.3,agentic_en,1,NONE PUBLIC,718,,,107,,False
+GLM-5.3,agentic_en,2,NONE PUBLIC,718,,,107,,False
+GLM-5.3,agentic_en,3,NONE PUBLIC,718,,,110,,False
+GLM-5.3,agentic_ar,1,NONE PUBLIC,764,,,151,,False
+GLM-5.3,agentic_ar,2,NONE PUBLIC,764,,,169,,False
+GLM-5.3,agentic_ar,3,NONE PUBLIC,764,,,153,,False
+DeepSeek V4 Pro,docqa_en,1,deepseek-tokenizer,536,453.0,83.0,96,95.0,True
+DeepSeek V4 Pro,docqa_en,2,deepseek-tokenizer,536,453.0,83.0,97,96.0,True
+DeepSeek V4 Pro,docqa_en,3,deepseek-tokenizer,536,453.0,83.0,82,81.0,True
+DeepSeek V4 Pro,docqa_ar,1,deepseek-tokenizer,809,726.0,83.0,354,353.0,True
+DeepSeek V4 Pro,docqa_ar,2,deepseek-tokenizer,809,726.0,83.0,146,145.0,True
+DeepSeek V4 Pro,docqa_ar,3,deepseek-tokenizer,809,726.0,83.0,146,145.0,True
+DeepSeek V4 Pro,extract_en,1,deepseek-tokenizer,364,281.0,83.0,191,190.0,True
+DeepSeek V4 Pro,extract_en,2,deepseek-tokenizer,364,281.0,83.0,139,138.0,True
+DeepSeek V4 Pro,extract_en,3,deepseek-tokenizer,364,281.0,83.0,197,196.0,True
+DeepSeek V4 Pro,extract_ar,1,deepseek-tokenizer,431,348.0,83.0,836,835.0,True
+DeepSeek V4 Pro,extract_ar,2,deepseek-tokenizer,431,348.0,83.0,178,177.0,True
+DeepSeek V4 Pro,extract_ar,3,deepseek-tokenizer,431,348.0,83.0,1337,1336.0,True
+DeepSeek V4 Pro,sudoku_moderate_en,1,deepseek-tokenizer,207,124.0,83.0,16000,16000.0,True
+DeepSeek V4 Pro,sudoku_moderate_en,2,deepseek-tokenizer,207,124.0,83.0,16000,16000.0,True
+DeepSeek V4 Pro,sudoku_moderate_en,3,deepseek-tokenizer,207,124.0,83.0,16000,16000.0,True
+DeepSeek V4 Pro,sudoku_moderate_ar,1,deepseek-tokenizer,248,165.0,83.0,16000,16000.0,True
+DeepSeek V4 Pro,sudoku_moderate_ar,2,deepseek-tokenizer,248,165.0,83.0,16000,16000.0,True
+DeepSeek V4 Pro,sudoku_moderate_ar,3,deepseek-tokenizer,248,165.0,83.0,16000,16000.0,True
+DeepSeek V4 Pro,sudoku_extreme_en,1,deepseek-tokenizer,202,119.0,83.0,32000,32000.0,True
+DeepSeek V4 Pro,sudoku_extreme_en,2,deepseek-tokenizer,202,119.0,83.0,32000,32000.0,True
+DeepSeek V4 Pro,sudoku_extreme_ar,1,deepseek-tokenizer,243,160.0,83.0,32000,32000.0,True
+DeepSeek V4 Pro,sudoku_extreme_ar,2,deepseek-tokenizer,243,160.0,83.0,32000,32000.0,True
+DeepSeek V4 Pro,agentic_en,1,deepseek-tokenizer,1213,143.0,1070.0,168,83.0,True
+DeepSeek V4 Pro,agentic_en,2,deepseek-tokenizer,1209,143.0,1066.0,165,80.0,True
+DeepSeek V4 Pro,agentic_en,3,deepseek-tokenizer,1226,143.0,1083.0,177,92.0,True
+DeepSeek V4 Pro,agentic_ar,1,deepseek-tokenizer,1265,160.0,1105.0,190,104.0,True
+DeepSeek V4 Pro,agentic_ar,2,deepseek-tokenizer,1258,160.0,1098.0,192,107.0,True
+DeepSeek V4 Pro,agentic_ar,3,deepseek-tokenizer,1268,160.0,1108.0,200,114.0,True
+Gemini 3.1 Pro,docqa_en,1,NONE PUBLIC,496,,,624,,False
+Gemini 3.1 Pro,docqa_en,2,NONE PUBLIC,496,,,561,,False
+Gemini 3.1 Pro,docqa_en,3,NONE PUBLIC,496,,,655,,False
+Gemini 3.1 Pro,docqa_ar,1,NONE PUBLIC,693,,,833,,False
+Gemini 3.1 Pro,docqa_ar,2,NONE PUBLIC,693,,,734,,False
+Gemini 3.1 Pro,docqa_ar,3,NONE PUBLIC,693,,,830,,False
+Gemini 3.1 Pro,extract_en,1,NONE PUBLIC,338,,,1253,,False
+Gemini 3.1 Pro,extract_en,2,NONE PUBLIC,338,,,1029,,False
+Gemini 3.1 Pro,extract_en,3,NONE PUBLIC,338,,,1296,,False
+Gemini 3.1 Pro,extract_ar,1,NONE PUBLIC,381,,,1102,,False
+Gemini 3.1 Pro,extract_ar,2,NONE PUBLIC,381,,,1000,,False
+Gemini 3.1 Pro,extract_ar,3,NONE PUBLIC,381,,,987,,False
+Gemini 3.1 Pro,sudoku_moderate_en,1,NONE PUBLIC,137,,,15996,,False
+Gemini 3.1 Pro,sudoku_moderate_en,2,NONE PUBLIC,137,,,15996,,False
+Gemini 3.1 Pro,sudoku_moderate_en,3,NONE PUBLIC,137,,,15996,,False
+Gemini 3.1 Pro,sudoku_moderate_ar,1,NONE PUBLIC,163,,,15441,,False
+Gemini 3.1 Pro,sudoku_moderate_ar,2,NONE PUBLIC,163,,,16008,,False
+Gemini 3.1 Pro,sudoku_moderate_ar,3,NONE PUBLIC,163,,,15996,,False
+Gemini 3.1 Pro,sudoku_extreme_en,1,NONE PUBLIC,132,,,31707,,False
+Gemini 3.1 Pro,sudoku_extreme_en,2,NONE PUBLIC,132,,,31540,,False
+Gemini 3.1 Pro,sudoku_extreme_ar,1,NONE PUBLIC,158,,,30800,,False
+Gemini 3.1 Pro,sudoku_extreme_ar,2,NONE PUBLIC,158,,,30801,,False
+Gemini 3.1 Pro,agentic_en,1,NONE PUBLIC,367,,,476,,False
+Gemini 3.1 Pro,agentic_en,2,NONE PUBLIC,367,,,570,,False
+Gemini 3.1 Pro,agentic_en,3,NONE PUBLIC,367,,,511,,False
+Gemini 3.1 Pro,agentic_ar,1,NONE PUBLIC,391,,,752,,False
+Gemini 3.1 Pro,agentic_ar,2,NONE PUBLIC,391,,,687,,False
+Gemini 3.1 Pro,agentic_ar,3,NONE PUBLIC,391,,,560,,False
+GPT-5.6 Sol,docqa_en,1,tiktoken o200k_base,456,450.0,6.0,30,26.0,False
+GPT-5.6 Sol,docqa_en,2,tiktoken o200k_base,456,450.0,6.0,30,26.0,False
+GPT-5.6 Sol,docqa_en,3,tiktoken o200k_base,456,450.0,6.0,30,26.0,False
+GPT-5.6 Sol,docqa_ar,1,tiktoken o200k_base,614,608.0,6.0,30,26.0,False
+GPT-5.6 Sol,docqa_ar,2,tiktoken o200k_base,614,608.0,6.0,30,26.0,False
+GPT-5.6 Sol,docqa_ar,3,tiktoken o200k_base,614,608.0,6.0,30,26.0,False
+GPT-5.6 Sol,extract_en,1,tiktoken o200k_base,279,273.0,6.0,59,55.0,False
+GPT-5.6 Sol,extract_en,2,tiktoken o200k_base,279,273.0,6.0,59,55.0,False
+GPT-5.6 Sol,extract_en,3,tiktoken o200k_base,279,273.0,6.0,59,55.0,False
+GPT-5.6 Sol,extract_ar,1,tiktoken o200k_base,321,315.0,6.0,54,50.0,False
+GPT-5.6 Sol,extract_ar,2,tiktoken o200k_base,321,315.0,6.0,54,50.0,False
+GPT-5.6 Sol,extract_ar,3,tiktoken o200k_base,321,315.0,6.0,54,50.0,False
+GPT-5.6 Sol,sudoku_moderate_en,1,tiktoken o200k_base,127,121.0,6.0,8876,66.0,False
+GPT-5.6 Sol,sudoku_moderate_en,2,tiktoken o200k_base,127,121.0,6.0,11446,253.0,True
+GPT-5.6 Sol,sudoku_moderate_en,3,tiktoken o200k_base,127,121.0,6.0,13538,66.0,False
+GPT-5.6 Sol,sudoku_moderate_ar,1,tiktoken o200k_base,152,146.0,6.0,5078,154.0,True
+GPT-5.6 Sol,sudoku_moderate_ar,2,tiktoken o200k_base,152,146.0,6.0,11655,209.0,True
+GPT-5.6 Sol,sudoku_moderate_ar,3,tiktoken o200k_base,152,146.0,6.0,13770,158.0,True
+GPT-5.6 Sol,sudoku_extreme_en,1,tiktoken o200k_base,122,116.0,6.0,12495,155.0,True
+GPT-5.6 Sol,sudoku_extreme_en,2,tiktoken o200k_base,122,116.0,6.0,14056,251.0,True
+GPT-5.6 Sol,sudoku_extreme_ar,1,tiktoken o200k_base,147,141.0,6.0,14063,189.0,True
+GPT-5.6 Sol,sudoku_extreme_ar,2,tiktoken o200k_base,147,141.0,6.0,9394,281.0,True
+GPT-5.6 Sol,agentic_en,1,tiktoken o200k_base,448,142.0,306.0,51,13.0,False
+GPT-5.6 Sol,agentic_en,2,tiktoken o200k_base,448,142.0,306.0,51,13.0,False
+GPT-5.6 Sol,agentic_en,3,tiktoken o200k_base,448,142.0,306.0,51,13.0,False
+GPT-5.6 Sol,agentic_ar,1,tiktoken o200k_base,464,150.0,314.0,61,23.0,False
+GPT-5.6 Sol,agentic_ar,2,tiktoken o200k_base,464,150.0,314.0,60,22.0,False
+GPT-5.6 Sol,agentic_ar,3,tiktoken o200k_base,464,150.0,314.0,60,22.0,False
+Kimi K3,docqa_en,1,NONE PUBLIC,536,,,120,,False
+Kimi K3,docqa_en,2,NONE PUBLIC,536,,,117,,False
+Kimi K3,docqa_en,3,NONE PUBLIC,536,,,120,,False
+Kimi K3,docqa_ar,1,NONE PUBLIC,992,,,151,,False
+Kimi K3,docqa_ar,2,NONE PUBLIC,992,,,191,,False
+Kimi K3,docqa_ar,3,NONE PUBLIC,992,,,180,,False
+Kimi K3,extract_en,1,NONE PUBLIC,368,,,200,,False
+Kimi K3,extract_en,2,NONE PUBLIC,368,,,197,,False
+Kimi K3,extract_en,3,NONE PUBLIC,368,,,221,,False
+Kimi K3,extract_ar,1,NONE PUBLIC,489,,,384,,False
+Kimi K3,extract_ar,2,NONE PUBLIC,489,,,354,,False
+Kimi K3,extract_ar,3,NONE PUBLIC,489,,,989,,False
+Kimi K3,sudoku_moderate_en,1,NONE PUBLIC,209,,,27757,,False
+Kimi K3,sudoku_moderate_en,2,NONE PUBLIC,209,,,37084,,False
+Kimi K3,sudoku_moderate_en,3,NONE PUBLIC,209,,,27709,,False
+Kimi K3,sudoku_moderate_ar,1,NONE PUBLIC,269,,,33705,,False
+Kimi K3,sudoku_moderate_ar,2,NONE PUBLIC,269,,,40738,,False
+Kimi K3,sudoku_moderate_ar,3,NONE PUBLIC,269,,,46291,,False
+Kimi K3,sudoku_extreme_en,1,NONE PUBLIC,204,,,104131,,False
+Kimi K3,sudoku_extreme_ar,1,NONE PUBLIC,238,,,50330,,False
+Claude Fable 5,docqa_en,1,NONE PUBLIC,707,,,69,,False
+Claude Fable 5,docqa_en,2,NONE PUBLIC,707,,,69,,False
+Claude Fable 5,docqa_en,3,NONE PUBLIC,707,,,31,,False
+Claude Fable 5,docqa_ar,1,NONE PUBLIC,0,,,0,,False
+Claude Fable 5,docqa_ar,2,NONE PUBLIC,0,,,0,,False
+Claude Fable 5,docqa_ar,3,NONE PUBLIC,0,,,0,,False
+Claude Fable 5,extract_en,1,NONE PUBLIC,440,,,104,,False
+Claude Fable 5,extract_en,2,NONE PUBLIC,0,,,0,,False
+Claude Fable 5,extract_en,3,NONE PUBLIC,440,,,9,,False
+Claude Fable 5,extract_ar,1,NONE PUBLIC,536,,,107,,False
+Claude Fable 5,extract_ar,2,NONE PUBLIC,536,,,89,,False
+Claude Fable 5,extract_ar,3,NONE PUBLIC,536,,,135,,False
+Claude Fable 5,sudoku_moderate_en,1,NONE PUBLIC,172,,,16000,,False
+Claude Fable 5,sudoku_moderate_en,2,NONE PUBLIC,172,,,16000,,False
+Claude Fable 5,sudoku_moderate_en,3,NONE PUBLIC,172,,,16000,,False
+Claude Fable 5,sudoku_moderate_ar,1,NONE PUBLIC,248,,,16000,,False
+Claude Fable 5,sudoku_moderate_ar,2,NONE PUBLIC,248,,,16000,,False
+Claude Fable 5,sudoku_moderate_ar,3,NONE PUBLIC,248,,,16000,,False
+Claude Fable 5,sudoku_extreme_en,1,NONE PUBLIC,168,,,32000,,False
+Claude Fable 5,sudoku_extreme_en,2,NONE PUBLIC,168,,,32000,,False
+Claude Fable 5,sudoku_extreme_ar,1,NONE PUBLIC,244,,,32000,,False
+Claude Fable 5,sudoku_extreme_ar,2,NONE PUBLIC,244,,,32000,,False
+Claude Fable 5,roster_en,1,NONE PUBLIC,493,,,5326,,False
+Claude Fable 5,roster_en,2,NONE PUBLIC,493,,,8537,,False
+Claude Fable 5,roster_ar,1,NONE PUBLIC,767,,,4879,,False
+Claude Fable 5,roster_ar,2,NONE PUBLIC,767,,,5817,,False
+Claude Fable 5,agentic_en,1,NONE PUBLIC,1337,,,166,,False
+Claude Fable 5,agentic_en,2,NONE PUBLIC,1337,,,166,,False
+Claude Fable 5,agentic_en,3,NONE PUBLIC,1337,,,165,,False
+Claude Fable 5,agentic_ar,1,NONE PUBLIC,1419,,,185,,False
+Claude Fable 5,agentic_ar,2,NONE PUBLIC,1419,,,185,,False
+Claude Fable 5,agentic_ar,3,NONE PUBLIC,1419,,,185,,False
+Kimi K3,agentic_en,1,NONE PUBLIC,806,,,237,,False
+Kimi K3,agentic_en,2,NONE PUBLIC,792,,,201,,False
+Kimi K3,agentic_en,3,NONE PUBLIC,806,,,279,,False
+Kimi K3,agentic_ar,1,NONE PUBLIC,846,,,299,,False
+Kimi K3,agentic_ar,2,NONE PUBLIC,846,,,299,,False
+Kimi K3,agentic_ar,3,NONE PUBLIC,846,,,247,,False
+GPT-5.6 Sol,roster_en,1,tiktoken o200k_base,306,300.0,6.0,1669,111.0,False
+GPT-5.6 Sol,roster_en,2,tiktoken o200k_base,306,300.0,6.0,2143,111.0,False
+GPT-5.6 Sol,roster_ar,1,tiktoken o200k_base,404,398.0,6.0,1498,111.0,False
+GPT-5.6 Sol,roster_ar,2,tiktoken o200k_base,404,398.0,6.0,2187,111.0,False
+Kimi K3,roster_en,1,NONE PUBLIC,399,,,11203,,False
+Kimi K3,roster_en,2,NONE PUBLIC,399,,,12761,,False
+Kimi K3,roster_ar,1,NONE PUBLIC,648,,,13727,,False
+Kimi K3,roster_ar,2,NONE PUBLIC,648,,,8466,,False
+Gemini 3.1 Pro,roster_en,1,NONE PUBLIC,324,,,13418,,False
+Gemini 3.1 Pro,roster_en,2,NONE PUBLIC,324,,,10906,,False
+Gemini 3.1 Pro,roster_ar,1,NONE PUBLIC,421,,,13971,,False
+Gemini 3.1 Pro,roster_ar,2,NONE PUBLIC,421,,,12304,,False
+GLM-5.3,roster_en,1,NONE PUBLIC,323,,,128000,,False
+GLM-5.3,roster_en,2,NONE PUBLIC,323,,,13187,,False
+GLM-5.3,roster_ar,1,NONE PUBLIC,497,,,10452,,False
+GLM-5.3,roster_ar,2,NONE PUBLIC,497,,,10487,,False
+DeepSeek V4 Pro,roster_en,1,deepseek-tokenizer,396,313.0,83.0,19149,19151.0,True
+DeepSeek V4 Pro,roster_en,2,deepseek-tokenizer,396,313.0,83.0,27693,27692.0,True
+DeepSeek V4 Pro,roster_ar,1,deepseek-tokenizer,548,465.0,83.0,15424,15423.0,True
+DeepSeek V4 Pro,roster_ar,2,deepseek-tokenizer,548,465.0,83.0,19636,19635.0,True
+GLM-5.3,sudoku_moderate_en,4,NONE PUBLIC,137,,,28579,,False
+GLM-5.3,sudoku_moderate_en,5,NONE PUBLIC,137,,,40330,,False
+GLM-5.3,sudoku_moderate_ar,4,NONE PUBLIC,180,,,29617,,False
+GLM-5.3,sudoku_moderate_ar,5,NONE PUBLIC,180,,,28054,,False
+GLM-5.3,sudoku_extreme_en,3,NONE PUBLIC,131,,,128000,,False
+GLM-5.3,sudoku_extreme_ar,3,NONE PUBLIC,174,,,128000,,False
+DeepSeek V4 Pro,sudoku_moderate_en,4,deepseek-tokenizer,207,124.0,83.0,29362,29361.0,True
+DeepSeek V4 Pro,sudoku_moderate_en,5,deepseek-tokenizer,207,124.0,83.0,53983,53982.0,True
+DeepSeek V4 Pro,sudoku_moderate_ar,4,deepseek-tokenizer,248,165.0,83.0,52785,52784.0,True
+DeepSeek V4 Pro,sudoku_moderate_ar,5,deepseek-tokenizer,248,165.0,83.0,65156,65155.0,True
+DeepSeek V4 Pro,sudoku_extreme_en,3,deepseek-tokenizer,202,119.0,83.0,128000,128000.0,True
+DeepSeek V4 Pro,sudoku_extreme_ar,3,deepseek-tokenizer,243,160.0,83.0,128000,127999.0,True
+Gemini 3.1 Pro,sudoku_moderate_en,4,NONE PUBLIC,137,,,35068,,False
+Gemini 3.1 Pro,sudoku_moderate_en,5,NONE PUBLIC,137,,,37177,,False
+Gemini 3.1 Pro,sudoku_moderate_ar,4,NONE PUBLIC,163,,,35755,,False
+Gemini 3.1 Pro,sudoku_moderate_ar,5,NONE PUBLIC,163,,,41633,,False
+Gemini 3.1 Pro,sudoku_extreme_en,3,NONE PUBLIC,132,,,40781,,False
+Gemini 3.1 Pro,sudoku_extreme_ar,3,NONE PUBLIC,158,,,47618,,False
+GPT-5.6 Sol,sudoku_moderate_en,4,tiktoken o200k_base,127,121.0,6.0,13500,66.0,False
+GPT-5.6 Sol,sudoku_moderate_en,5,tiktoken o200k_base,127,121.0,6.0,13015,159.0,True
+GPT-5.6 Sol,sudoku_moderate_ar,4,tiktoken o200k_base,152,146.0,6.0,7840,158.0,True
+GPT-5.6 Sol,sudoku_moderate_ar,5,tiktoken o200k_base,152,146.0,6.0,12066,73.0,False
+GPT-5.6 Sol,sudoku_extreme_en,3,tiktoken o200k_base,122,116.0,6.0,12913,284.0,True
+GPT-5.6 Sol,sudoku_extreme_ar,3,tiktoken o200k_base,147,141.0,6.0,15405,270.0,True
+Claude Fable 5,sudoku_moderate_en,4,NONE PUBLIC,172,,,18590,,False
+Claude Fable 5,sudoku_moderate_en,5,NONE PUBLIC,172,,,17293,,False
+Claude Fable 5,sudoku_moderate_ar,4,NONE PUBLIC,248,,,22460,,False
+Claude Fable 5,sudoku_moderate_ar,5,NONE PUBLIC,248,,,16744,,False
+Claude Fable 5,sudoku_extreme_en,3,NONE PUBLIC,168,,,128000,,False
+Claude Fable 5,sudoku_extreme_ar,3,NONE PUBLIC,244,,,128000,,False
