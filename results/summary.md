@@ -12,7 +12,7 @@
 | DeepSeek V4 Pro |      54 |       2.6089 |         0.7037 |         0.860739 |                1.98 |
 
 
-## Cost per successful task (mean cost of successful runs; blank = never succeeded)
+## Mean cost of successful runs
 
 | model_label     |   agentic |   docqa |   extract |   filing_extract |   filing_multi |   roster |   sudoku_moderate |
 |:----------------|----------:|--------:|----------:|-----------------:|---------------:|---------:|------------------:|

@@ -150,7 +150,13 @@ python reconcile.py            # billed counts vs public tokenizers
 - `results/raw/*.json` — full API responses
 - `results/summary.md` — totals, success rates, cost per successful task,
   run-to-run variance
-- `charts/*.png` — working charts (unstyled)
+- `charts/<experiment>/` — per-experiment charts + `analysis.md` (cost per
+  run EN/AR, token anatomy, and experiment-specific views), for: docqa,
+  extract, agentic, sudoku, roster, filings
+- `charts/overall/` — cross-experiment charts + `analysis.md`, organized
+  around the two research questions: the hypothesis (rank bumps, sticker
+  scatter, Spearman table) and the Arabic impact (cost ratios, success
+  rates, the input meter, cache effects)
 
 ## Results (main run 2026-08-19/20; filings run 2026-08-28; 316 calls, $72.59 total)
 
