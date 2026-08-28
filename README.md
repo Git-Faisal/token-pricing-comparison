@@ -5,13 +5,25 @@ across six frontier models — in real billed dollars, not sticker prices.
 
 Companion repository for a blog post on token pricing (link TBD).
 
-## The question
+## The hypothesis
 
-Every lab prices its API in tokens, but a token is not a standard unit:
-each lab designs its own tokenizer, so the same text is a different number
-of tokens on every meter — and most meters cannot be independently checked.
-If per-token prices were comparable, six models given identical work should
-cost roughly in proportion to their sticker prices. Do they?
+**API per-token pricing is not a reliable proxy for what work actually
+costs, and should not be used as a ranking criterion when evaluating
+models for enterprise workloads.**
+
+Why it might be true: a token is not a standard unit (each lab designs its
+own tokenizer, so the same text bills differently on every meter, and most
+meters cannot be independently checked); models decide for themselves how
+many invisible thinking tokens a task consumes; and success is never on
+the price sheet. If per-token prices were a good proxy, six models given
+identical work should cost roughly in proportion to their sticker prices.
+
+**Result: supported.** Rank correlation between sticker price and actual
+cost per task was 0.29-0.35 on the enterprise-style tasks (invoice
+extraction, rostering) -- closer to shuffled than sorted. Details in the
+results section; the practical alternative this repo demonstrates is
+measuring cost per successful task on your own workload (~$50 of API
+credits for a six-model shortlist).
 
 ## Models (one flagship per lab, as listed on OpenRouter, Aug 2026)
 
@@ -196,6 +208,32 @@ No model solved it in any run, either language, at 16K, 32K, or 128K budgets.
 GLM, DeepSeek, and Fable burned their full budgets (Fable: $6.40 per
 128K-token failure); Sol and Gemini stopped early and submitted wrong grids.
 Kimi thought 104K tokens on one attempt ($1.56) and still failed.
+
+### The hypothesis test: sticker price vs. what work actually cost
+
+Spearman rank correlation between sticker output price and measured cost,
+across the six models (1.0 = price sheet perfectly predicts the bill):
+
+| Task | sticker vs. cost/task | sticker vs. cost/success |
+|---|---|---|
+| Invoice extraction | 0.29 | 0.29 |
+| Driver roster | 0.35 | 0.35 |
+| Doc Q&A | 0.58 | 0.75 |
+| Agentic flight search | 0.75 | 0.75 |
+| Sudoku moderate (128K) | 0.90 | 0.70 |
+
+The concrete inversions behind the low numbers: Gemini's sticker is
+cheaper than Sol's, but Gemini billed 2-6x more on every office task;
+DeepSeek's sticker is 5x cheaper than Sol's, yet a solved roster cost
+2.8x more on DeepSeek; Sol and Kimi share an identical $15/M output price
+and differed 6x on cost per solved roster -- and infinitely on Sudoku,
+which Sol never solved. Correlation is strongest precisely where models
+are forced into identical behavior (budget-capped reasoning burn) and
+weakest on the everyday work enterprises actually buy. The extremes do
+survive (DeepSeek cheapest almost everywhere, Fable priciest almost
+everywhere): the price sheet tells you the cost decade, not the ranking
+within it. Caveat: n=6 models, 2-6 runs per cell -- descriptive of this
+sample, not a universal constant.
 
 ### English vs Arabic: the language penalty, measured on real bills
 
