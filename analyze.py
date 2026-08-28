@@ -42,10 +42,26 @@ def main():
     df["success"] = df["success"].astype(str).str.lower() == "true"
 
     # 1. The input meter: identical document, billed input token counts.
+    # Content-filter refusals bill 0 prompt tokens; annotate rather than
+    # letting them read as missing data.
     docqa = df[df.task_type == "docqa"]
-    bar_grouped(docqa, "prompt_tokens",
-                "Same document, six meters: billed input tokens (doc Q&A task)",
-                "1_input_meter.png")
+    pivot1 = docqa.pivot_table(index="model_label", columns="lang",
+                               values="prompt_tokens", aggfunc="mean")
+    pivot1 = pivot1.reindex([m for m in ORDER if m in pivot1.index])
+    ax = pivot1.plot(kind="bar", figsize=(10, 5), rot=20)
+    ax.set_title("Same document, six meters: billed input tokens (doc Q&A task)")
+    ax.set_xlabel("")
+    for i, model in enumerate(pivot1.index):
+        for j, lang in enumerate(pivot1.columns):
+            if pivot1.loc[model, lang] == 0:
+                refused = docqa[(docqa.model_label == model) & (docqa.lang == lang) &
+                                (docqa.finish_reason == "content_filter")]
+                if len(refused):
+                    ax.annotate(f"blocked by\ncontent filter\n({len(refused)}/{len(refused)} runs)",
+                                (i, 30), ha="center", fontsize=8, color="red")
+    plt.tight_layout()
+    plt.savefig(os.path.join(CHARTS, "1_input_meter.png"), dpi=150)
+    plt.close()
 
     # 2. Cost per task (mean across runs), by task type, English tasks.
     for lang in ("en", "ar"):
