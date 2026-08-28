@@ -142,7 +142,7 @@ meters. Graded on the ranking order and the EPS answer.
 pip install -r requirements.txt
 # put your OpenRouter key in .openrouter_key (gitignored) or OPENROUTER_API_KEY
 python runner.py --plan        # see the full matrix, no spend
-python runner.py               # run everything (~$30-60 in credits)
+python runner.py               # run everything (~$75-100 in credits at current budgets)
 python analyze.py              # charts/ + results/summary.md
 python reconcile.py            # billed counts vs public tokenizers
 ```

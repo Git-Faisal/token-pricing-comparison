@@ -1,4 +1,6 @@
-"""Task definitions: 5 task types x 2 languages (English / Arabic mirrors).
+"""Task definitions: 8 task types x 2 languages (English / Arabic mirrors):
+docqa, extract, agentic, sudoku_moderate, sudoku_extreme, roster,
+filing_extract, filing_multi. See the repo README for full descriptions.
 
 Sudoku puzzles come from the Sudoku-Extreme benchmark test split
 (https://huggingface.co/datasets/sapientinc/sudoku-extreme):
