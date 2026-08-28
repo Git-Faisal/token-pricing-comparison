@@ -241,3 +241,90 @@ TASKS = [
         "grade": {"kind": "agentic", "expected": ["189"]},
     },
 ]
+
+
+# ---------------- Filings tasks (real Tadawul disclosures, see corpus/MANIFEST.md) ----------------
+
+FILING_META = {
+    "mis": {
+        "en": "mis_7200_h1-2026_en.txt", "ar": "mis_7200_h1-2026_ar.txt",
+        "expected": {"six_month_revenue": 910083628.0, "six_month_net_income": 55653050.0, "basic_eps_six_month": 1.86},
+        "keys": "six_month_revenue, six_month_net_income, basic_eps_six_month",
+    },
+    "aramco": {
+        "en": "aramco_2222_h1-2026_en.txt", "ar": "aramco_2222_h1-2026_ar.txt",
+        "expected": {"six_month_net_income": 244607.0, "six_month_eps": 1.00, "six_month_dividends_paid": 164153.0},
+        "keys": "six_month_net_income, six_month_eps, six_month_dividends_paid",
+    },
+    "alrajhi": {
+        "en": "alrajhi_1120_h1-2026_en.txt", "ar": "alrajhi_1120_h1-2026_ar.txt",
+        "expected": {"six_month_net_income_attributable": 13763689.0, "basic_eps": 2.17, "outstanding_shares": 6000000.0},
+        "keys": "six_month_net_income_attributable, basic_eps, outstanding_shares",
+    },
+}
+
+
+def _filing(name):
+    return _read_corpus(FILING_META[name]["en"]), _read_corpus(FILING_META[name]["ar"])
+
+
+def _read_corpus(fname):
+    with open(os.path.join(HERE, "corpus", fname), encoding="utf-8") as f:
+        return f.read()
+
+
+def _extract_prompt_en(name):
+    m = FILING_META[name]
+    return ("Below is the text of an interim financial statements filing published on the Saudi Exchange. "
+            "Extract the following figures for the six-month period ended 30 June 2026 and return ONLY a JSON "
+            "object with exactly these keys: " + m["keys"] + ". Report each number exactly as stated in the "
+            "filing, in the filing's own units, without converting or rescaling.\n\n---\n\n" + _read_corpus(m["en"]))
+
+
+def _extract_prompt_ar(name):
+    m = FILING_META[name]
+    return ("فيما يلي نص قوائم مالية أولية منشورة في تداول السعودية. استخرج الأرقام التالية لفترة الستة أشهر "
+            "المنتهية في 30 يونيو 2026 وأعد فقط كائن JSON يحتوي بالضبط على هذه المفاتيح: " + m["keys"] +
+            ". اذكر كل رقم كما ورد في القوائم تماماً وبوحدات القوائم نفسها دون تحويل أو تغيير في المقياس.\n\n---\n\n" + _read_corpus(m["ar"]))
+
+
+MULTI_QUESTION_EN = ("Below are the interim financial statements of three companies listed on the Saudi Exchange, "
+                     "all for the six-month period ended 30 June 2026. Note that the filings use different "
+                     "reporting units. Answer with ONLY a JSON object with exactly these keys: "
+                     "ranking_by_net_income (array of the three company names, largest six-month net income first, "
+                     "in comparable absolute terms), highest_basic_eps_company (one company name).\n\n")
+
+MULTI_QUESTION_AR = ("فيما يلي القوائم المالية الأولية لثلاث شركات مدرجة في تداول السعودية، وجميعها لفترة الستة أشهر "
+                     "المنتهية في 30 يونيو 2026. لاحظ أن القوائم تستخدم وحدات عرض مختلفة. أجب فقط بكائن JSON "
+                     "يحتوي بالضبط على هذين المفتاحين: ranking_by_net_income (مصفوفة بأسماء الشركات الثلاث، الأعلى "
+                     "صافي دخل لستة أشهر أولاً، بقيم مطلقة قابلة للمقارنة)، highest_basic_eps_company (اسم شركة واحدة).\n\n")
+
+
+def _multi_prompt(lang):
+    q = MULTI_QUESTION_EN if lang == "en" else MULTI_QUESTION_AR
+    parts = []
+    for name, label in (("mis", "Al Moammar Information Systems (MIS)"),
+                        ("aramco", "Saudi Aramco"), ("alrajhi", "Al Rajhi Bank")):
+        parts.append("##### FILING: " + label + " #####\n" + _read_corpus(FILING_META[name][lang]))
+    return q + "\n\n".join(parts)
+
+
+for _name in FILING_META:
+    TASKS.append({
+        "id": f"filing_extract_{_name}_en", "type": "filing_extract", "lang": "en",
+        "prompt": _extract_prompt_en(_name), "max_tokens": 8000,
+        "grade": {"kind": "json_fields", "expected": FILING_META[_name]["expected"]},
+    })
+    TASKS.append({
+        "id": f"filing_extract_{_name}_ar", "type": "filing_extract", "lang": "ar",
+        "prompt": _extract_prompt_ar(_name), "max_tokens": 8000,
+        "grade": {"kind": "json_fields", "expected": FILING_META[_name]["expected"]},
+    })
+
+for _lang in ("en", "ar"):
+    TASKS.append({
+        "id": f"filing_multi_{_lang}", "type": "filing_multi", "lang": _lang,
+        "prompt": _multi_prompt(_lang), "max_tokens": 16000,
+        "grade": {"kind": "filing_multi",
+                  "expected": {"ranking": ["aramco", "rajhi", "moammar|mis"], "highest_eps": "rajhi"}},
+    })

@@ -150,6 +150,19 @@ def grade(task: dict, final_text: str, tool_used: bool) -> bool:
             sorted(n.lower() for n in want[k])
             for k in want
         )
+    if kind == "filing_multi":
+        obj = _extract_json(text)
+        if not isinstance(obj, dict):
+            return False
+        rank = obj.get("ranking_by_net_income")
+        eps = str(obj.get("highest_basic_eps_company", "")).lower()
+        want = spec["expected"]
+        if not isinstance(rank, list) or len(rank) != 3:
+            return False
+        for got, pat in zip(rank, want["ranking"]):
+            if not any(p in str(got).lower() for p in pat.split("|")):
+                return False
+        return want["highest_eps"] in eps
     raise ValueError(f"Unknown grade kind {kind}")
 
 
