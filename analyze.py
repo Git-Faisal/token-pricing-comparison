@@ -131,6 +131,46 @@ def main():
     plt.savefig(os.path.join(CHARTS, "7_rank_bump.png"), dpi=150)
     plt.close()
 
+    # 8. Rank bump by cost per SUCCESSFUL task: total spend on the task
+    # (failed runs included) divided by number of successes. Models that
+    # never succeeded are pinned to a "never delivered" band.
+    NEVER = len(ORDER) + 1
+    cols8 = {"Sticker\nprice": pd.Series(STICKER_OUT).rank()}
+    for t, label in [("docqa", "Doc Q&A"), ("extract", "Invoice\nextract"),
+                     ("agentic", "Agentic"), ("roster", "Roster"),
+                     ("sudoku_moderate", "Sudoku\n(128K)")]:
+        sub = df[df.task_type == t]
+        if t == "sudoku_moderate" and "max_tokens" in df.columns:
+            sub = pd.concat([sub[sub.max_tokens == 128000],
+                             sub[sub.model_label == "Kimi K3"]])
+        spent = sub.groupby("model_label").cost_usd.sum()
+        wins = sub.groupby("model_label").success.sum()
+        cps = spent / wins.replace(0, pd.NA)
+        r = cps.rank()
+        r[wins == 0] = NEVER
+        cols8[label] = r
+    ranks8 = pd.DataFrame(cols8).reindex(ORDER)
+    fig, ax = plt.subplots(figsize=(11, 6.5))
+    xs = range(len(ranks8.columns))
+    for model in ranks8.index:
+        y = ranks8.loc[model].values
+        ax.plot(xs, y, marker="o", linewidth=2.5, alpha=0.85)
+        ax.annotate(model, (xs[-1] + 0.08, y[-1]), fontsize=9, va="center")
+        ax.annotate(model, (xs[0] - 0.08, y[0]), fontsize=9, va="center", ha="right")
+    ax.set_xticks(list(xs)); ax.set_xticklabels(ranks8.columns)
+    ax.set_yticks(list(range(1, len(ORDER) + 1)) + [NEVER])
+    ax.set_yticklabels([str(i) for i in range(1, len(ORDER) + 1)] +
+                       ["never\ndelivered"])
+    ax.axhspan(NEVER - 0.5, NEVER + 0.5, color="red", alpha=0.08)
+    ax.invert_yaxis()
+    ax.set_xlim(-1.6, len(ranks8.columns) + 0.8)
+    ax.set_title("Rank by sticker price vs. rank by cost per SUCCESSFUL task\n"
+                 "(total spend on task incl. failures / number of successes)")
+    ax.grid(axis="y", alpha=0.25)
+    plt.tight_layout()
+    plt.savefig(os.path.join(CHARTS, "8_rank_bump_success.png"), dpi=150)
+    plt.close()
+
     # ---- summary tables ----
     lines = ["# Results summary\n"]
     lines.append("## Totals per model\n")
