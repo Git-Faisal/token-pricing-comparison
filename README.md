@@ -1,4 +1,4 @@
-# LLM Unit Economics: what does the same task actually cost?
+# What does the same task actually cost?
 
 An open, replicable experiment measuring what identical work actually costs
 across six frontier models — in real billed dollars, not sticker prices.
