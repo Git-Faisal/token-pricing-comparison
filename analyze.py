@@ -102,6 +102,38 @@ def main():
     var["max_over_min"] = var["max"] / var["min"].replace(0, pd.NA)
     worst = var.sort_values("max_over_min", ascending=False).head(15)
 
+
+    # 7. Rank bump: sticker rank vs actual cost rank per task.
+    sticker_rank = pd.Series(STICKER_OUT).rank()
+    cols = {"Sticker
+price": sticker_rank}
+    for t, label in [("docqa", "Doc Q&A"), ("extract", "Invoice
+extract"),
+                     ("agentic", "Agentic"), ("roster", "Roster"),
+                     ("sudoku_moderate", "Sudoku
+(128K)")]:
+        sub = df[df.task_type == t]
+        if t == "sudoku_moderate" and "max_tokens" in df.columns:
+            sub = pd.concat([sub[sub.max_tokens == 128000],
+                             sub[sub.model_label == "Kimi K3"]])
+        cols[label] = sub.groupby("model_label").cost_usd.mean().rank()
+    ranks = pd.DataFrame(cols).reindex(ORDER)
+    fig, ax = plt.subplots(figsize=(11, 6))
+    xs = range(len(ranks.columns))
+    for model in ranks.index:
+        y = ranks.loc[model].values
+        ax.plot(xs, y, marker="o", linewidth=2.5, alpha=0.85)
+        ax.annotate(model, (xs[-1] + 0.08, y[-1]), fontsize=9, va="center")
+        ax.annotate(model, (xs[0] - 0.08, y[0]), fontsize=9, va="center", ha="right")
+    ax.set_xticks(list(xs)); ax.set_xticklabels(ranks.columns)
+    ax.set_yticks(range(1, len(ranks) + 1)); ax.invert_yaxis()
+    ax.set_xlim(-1.6, len(ranks.columns) + 0.8)
+    ax.set_title("Rank by sticker price vs. rank by actual mean cost per task")
+    ax.grid(axis="y", alpha=0.25)
+    plt.tight_layout()
+    plt.savefig(os.path.join(CHARTS, "7_rank_bump.png"), dpi=150)
+    plt.close()
+
     # ---- summary tables ----
     lines = ["# Results summary\n"]
     lines.append("## Totals per model\n")
