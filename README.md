@@ -197,6 +197,37 @@ GLM, DeepSeek, and Fable burned their full budgets (Fable: $6.40 per
 128K-token failure); Sol and Gemini stopped early and submitted wrong grids.
 Kimi thought 104K tokens on one attempt ($1.56) and still failed.
 
+### English vs Arabic: the language penalty, measured on real bills
+
+Every task ran in mirrored English and Arabic versions, so the language
+penalty is directly measurable per model per task:
+
+- **The input meter.** The same ~500-word report billed as: +35% more
+  tokens in Arabic on GPT-5.6 Sol, +40% on Gemini, +51% on DeepSeek, +70%
+  on GLM, +85% on Kimi. (Fable has no Arabic reading: its content filter
+  blocked the Arabic document all 3 runs.) On the real Tadawul filings the
+  gap widens further -- Al Rajhi's own Arabic filing billed ~4x its English
+  version on GLM's meter (partly longer Arabic text, partly the tokenizer).
+- **The invisible thinking penalty.** On invoice extraction, the same task
+  triggered 4-7x more reasoning tokens in Arabic than English: DeepSeek
+  6.9x, GLM 5.2x, Kimi 4.2x. The models think longer about Arabic input --
+  and bill for it -- even when the output is identical JSON.
+- **On hard reasoning the penalty shrinks**: Arabic sudoku cost only
+  0-30% more thinking (Kimi +30%, DeepSeek +26%, others ~0) -- consistent
+  with models reasoning internally in English regardless of prompt language.
+- **Net effect**: averaged across tasks, the same completed work cost an
+  Arabic user ~3% more on Sol, ~10% on Gemini, ~25% on Kimi, ~42% on
+  DeepSeek, and ~63% on GLM. Which vendor you choose matters far more if
+  you work in Arabic -- and the lab rankings differ from the English ones.
+
+A methodological note: our pre-experiment tokenizer demo (an 11-token
+English question vs 12 in Arabic on OpenAI's public tokenizer) correctly
+predicted the *ranking* -- OpenAI's meter is the kindest to Arabic -- but
+badly understated the *magnitude* on real business documents, where
+financial and legal vocabulary is far less well served by every
+tokenizer's vocabulary than common travel words. Toy sentences flatter
+the meters.
+
 ### The meter itself
 
 - The two labs with public tokenizers reconcile exactly: on every
