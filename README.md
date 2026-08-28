@@ -27,27 +27,82 @@ cost roughly in proportion to their sticker prices. Do they?
 Open-weight models are pinned to the lab's own hosting endpoint
 (`provider.order`, no fallbacks) so every call is served and priced identically.
 
-## Tasks (5 types x 2 languages, English and Arabic mirrors)
+## The tests
 
-| Task | What it isolates |
-|---|---|
-| `docqa` | The input meter: identical ~500-word report, 3 factual questions |
-| `extract` | Structured output: invoice -> fixed-schema JSON |
-| `sudoku_moderate` | Reasoning burn on a solvable puzzle (Sudoku-Extreme test split, rating 1) |
-| `sudoku_extreme` | Reasoning burn at the frontier (Sudoku-Extreme "forum hardest", rating 60) |
-| `roster` | An enterprise constraint problem: a driver shift roster with 10 interlocking rules and a provably unique solution (see `tools/make_roster.py`) |
-| `filing_extract` | Real bilingual filings from the Saudi Exchange (MIS, Aramco, Al Rajhi H1-2026 interims; see `corpus/MANIFEST.md`): extract key figures to fixed-schema JSON |
-| `filing_multi` | All three filings in one ~70-90K-token prompt: rank companies by net income across three different reporting units and name the highest EPS |
-| `agentic` | A tool-use loop: flight search with a canned tool result |
+Every test runs on all six models, in two mirrored versions (English and
+Arabic), with 2-3 repeated runs per cell -- thinking length is
+nondeterministic, so run-to-run cost variance is itself a measurement.
+Every answer is machine-graded; no judgment calls. The test suite spans
+three tiers: everyday office work, hard reasoning, and real enterprise
+document work.
 
-Sudoku puzzles and reference solutions come from the
+### Tier 1: office work (the baseline)
+
+**1. Report Q&A** (`docqa`) -- A ~500-word synthetic logistics operations
+report followed by three factual questions (revenue, a percentage, a date).
+Every model reads the byte-identical document, so this isolates the *input
+meter*: how many tokens each lab bills for the same text, and what a trivial
+comprehension task costs. Graded by checking the three expected values
+appear in the answer.
+
+**2. Invoice extraction** (`extract`) -- A synthetic tax invoice to be
+converted to a fixed-schema JSON object (invoice number, date, vendor,
+total, line-item count). The most common enterprise LLM workload. Graded by
+parsing the JSON and comparing each field.
+
+**3. Flight search agent** (`agentic`) -- One tool-use loop: the model gets
+a `search_flights` tool, must call it, receives a canned JSON result (three
+flights), and must answer with the cheapest airline and price. Tests the
+minimal agentic pattern -- tool call, context re-send, final answer -- and
+its cost. Graded on tool use plus the correct airline/price in the answer.
+
+### Tier 2: reasoning (where thinking burn lives)
+
+**4. Sudoku** (`sudoku_moderate`, `sudoku_extreme`) -- Two puzzles from the
 [Sudoku-Extreme benchmark](https://huggingface.co/datasets/sapientinc/sudoku-extreme)
-test split. See `tasks.py` for the exact prompts and design choices
-(Western digits in Arabic mirrors; English tool schema in both mirrors).
+test split, with the dataset's own solutions as ground truth: one from the
+easiest tier (rating 1) and one from the "forum hardest" set (rating 60).
+Sudoku is deliberately knowledge-free: no fact retrieval helps, only
+sustained constraint propagation and search -- the computation shape that
+token-by-token reasoning is worst at (and is billed for). Run twice: pass 1
+under fixed budgets (16K/32K tokens) measuring behavior when a customer
+budget binds; pass 2 at 128K measuring what happens when it doesn't.
+Graded by exact match of the 81-digit solution grid.
 
-Each (model, task) cell runs 3 times (2 for `sudoku_extreme`) because
-thinking length is nondeterministic — the run-to-run cost variance is
-itself one of the measurements.
+**5. Driver roster** (`roster`) -- The enterprise version of the same
+muscle: build a weekly shift roster for 5 named drivers, Sunday-Thursday,
+day/night shifts, 2 drivers per shift, under 10 interlocking rules (exact
+weekly quotas, a night-to-morning rest rule, refrigerated-cargo
+certification coverage, a missing forklift licence, an availability gap, a
+pairing ban, no double shifts, and two individual constraints). The
+instance is constructed so that **exactly one valid roster exists** --
+verified by exhaustive search in `tools/make_roster.py`, so grading equals
+feasibility. Unlike Sudoku, no one can say their business does not do this.
+
+### Tier 3: real enterprise documents
+
+**6. Filing extraction** (`filing_extract`) -- Real interim financial
+statements of three Tadawul-listed companies -- Al Moammar Information
+Systems (7200), Saudi Aramco (2222), and Al Rajhi Bank (1120), all for the
+six-month period ended 30 June 2026 -- in each company's own official
+English and Arabic versions (see `corpus/MANIFEST.md` for provenance).
+The model reads one full filing (14K-40K billed tokens) and extracts three
+key figures (net income, EPS, plus one company-specific field) to
+fixed-schema JSON. Because the same disclosure exists in both languages
+*as published by the issuer*, the English/Arabic cost comparison has no
+translation confound at all. Graded numerically against figures verified
+in the filings and against the exchange's own data.
+
+**7. Multi-filing analyst question** (`filing_multi`) -- All three filings
+concatenated into one ~280K-character prompt (~75K+ billed tokens): rank
+the companies by six-month net income and name the one with the highest
+basic EPS. The trap is real analyst work: the three filings report in
+**three different units** (riyals, millions of riyals, thousands of
+riyals), so naive number comparison ranks a 13.8-billion-riyal bank above
+a 244.6-billion-riyal oil company -- and the highest-EPS answer is not the
+biggest company. This is also the input meter measured at enterprise
+scale: the same document set bills as a different token count on all six
+meters. Graded on the ranking order and the EPS answer.
 
 ## Protocol
 
