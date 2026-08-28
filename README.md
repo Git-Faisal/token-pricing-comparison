@@ -18,12 +18,19 @@ many invisible thinking tokens a task consumes; and success is never on
 the price sheet. If per-token prices were a good proxy, six models given
 identical work should cost roughly in proportion to their sticker prices.
 
-**Result: supported.** Rank correlation between sticker price and actual
-cost per task was 0.29-0.35 on the enterprise-style tasks (invoice
-extraction, rostering) -- closer to shuffled than sorted. Details in the
-results section; the practical alternative this repo demonstrates is
-measuring cost per successful task on your own workload (~$50 of API
-credits for a six-model shortlist).
+**Result: supported, with a sharpening.** Rank correlation between sticker
+price and actual cost ranged from 0.29-0.35 (invoice extraction, rostering)
+to 0.81-0.90 (bulk document reading, budget-capped reasoning burn). The
+pattern: the price sheet predicts cost only where models have no behavioral
+freedom -- when the bill is dominated by mechanically reading a large fixed
+input or burning to a fixed cap, cost collapses to tokens x price. The
+moment model behavior varies (how long to think, how verbose to be, whether
+to succeed), the correlation collapses with it. The price sheet prices the
+mechanical part of the work; it cannot price the model's judgment, which is
+the part a buyer is paying for. Full table in `charts/overall/analysis.md`;
+the practical alternative this repo demonstrates is measuring cost per
+successful task on your own workload (~$70 of API credits for a six-model
+shortlist across seven task families).
 
 ## Models (one flagship per lab, as listed on OpenRouter, Aug 2026)
 
