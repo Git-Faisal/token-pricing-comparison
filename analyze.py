@@ -105,13 +105,10 @@ def main():
 
     # 7. Rank bump: sticker rank vs actual cost rank per task.
     sticker_rank = pd.Series(STICKER_OUT).rank()
-    cols = {"Sticker
-price": sticker_rank}
-    for t, label in [("docqa", "Doc Q&A"), ("extract", "Invoice
-extract"),
+    cols = {"Sticker\nprice": sticker_rank}
+    for t, label in [("docqa", "Doc Q&A"), ("extract", "Invoice\nextract"),
                      ("agentic", "Agentic"), ("roster", "Roster"),
-                     ("sudoku_moderate", "Sudoku
-(128K)")]:
+                     ("sudoku_moderate", "Sudoku\n(128K)")]:
         sub = df[df.task_type == t]
         if t == "sudoku_moderate" and "max_tokens" in df.columns:
             sub = pd.concat([sub[sub.max_tokens == 128000],
