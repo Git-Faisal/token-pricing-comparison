@@ -168,14 +168,21 @@ Under pass-1 budgets (16K tokens), only Kimi K3 solved it (6/6), because its
 host does not enforce the customer's token cap (it used up to 46K tokens on a
 16K request). At pass-2 budgets (128K):
 
-| Model | Solved | Mean thinking tokens | Mean cost/run |
-|---|---|---|---|
-| DeepSeek V4 Pro | 4/4 | 50,290 | $0.10 |
-| Claude Fable 5 | 4/4 | 17,921 | $0.94 |
-| GLM-5.3 | 2/4 | 31,560 | $0.14 |
-| Gemini 3.1 Pro | 1/4 | 36,763 | $0.45 |
-| GPT-5.6 Sol | 0/4 | 11,532 | $0.17 |
-| Kimi K3 (pass 1, uncapped) | 6/6 | 35,501 | $0.53 |
+| Model | Condition | Runs | Solved | Mean thinking tokens | Mean cost/run |
+|---|---|---|---|---|---|
+| DeepSeek V4 Pro | pass 2, 128K budget | 4 | 4 | 50,290 | $0.10 |
+| Claude Fable 5 | pass 2, 128K budget | 4 | 4 | 17,921 | $0.94 |
+| GLM-5.3 | pass 2, 128K budget | 4 | 2 | 31,560 | $0.14 |
+| Gemini 3.1 Pro | pass 2, 128K budget | 4 | 1 | 36,763 | $0.45 |
+| GPT-5.6 Sol | pass 2, 128K budget | 4 | 0 | 11,532 | $0.17 |
+| Kimi K3 | pass 1, cap ignored | 6 | 6 | 35,501 | $0.53 |
+
+Why Kimi's row is different: its provider does not enforce the customer's
+`max_tokens` on reasoning, so Kimi already ran effectively uncapped in
+pass 1 (thinking 27K-46K tokens against a 16K request, all 6 runs). It was
+therefore exempted from pass 2 -- a 128K request would re-measure the same
+condition. Its 6 pass-1 runs are shown here as the equivalent unbounded
+condition; the five cap-compliant models get 4 fresh pass-2 runs each.
 
 Note the inversion: Fable needed the fewest thinking tokens of any solver and
 still cost ~10x DeepSeek per solve, because its per-token price is ~16x
