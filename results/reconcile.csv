@@ -219,3 +219,99 @@ Claude Fable 5,sudoku_moderate_ar,4,NONE PUBLIC,248,,,22460,,False
 Claude Fable 5,sudoku_moderate_ar,5,NONE PUBLIC,248,,,16744,,False
 Claude Fable 5,sudoku_extreme_en,3,NONE PUBLIC,168,,,128000,,False
 Claude Fable 5,sudoku_extreme_ar,3,NONE PUBLIC,244,,,128000,,False
+GLM-5.3,filing_extract_mis_en,1,NONE PUBLIC,14623,,,1069,,False
+GLM-5.3,filing_extract_mis_en,2,NONE PUBLIC,14623,,,902,,False
+GLM-5.3,filing_extract_mis_ar,1,NONE PUBLIC,22188,,,1827,,False
+GLM-5.3,filing_extract_mis_ar,2,NONE PUBLIC,22188,,,1742,,False
+GLM-5.3,filing_extract_aramco_en,1,NONE PUBLIC,38609,,,4362,,False
+GLM-5.3,filing_extract_aramco_en,2,NONE PUBLIC,38609,,,2054,,False
+GLM-5.3,filing_extract_aramco_ar,1,NONE PUBLIC,67189,,,4227,,False
+GLM-5.3,filing_extract_aramco_ar,2,NONE PUBLIC,67189,,,8000,,False
+GLM-5.3,filing_extract_alrajhi_en,1,NONE PUBLIC,29654,,,3553,,False
+GLM-5.3,filing_extract_alrajhi_en,2,NONE PUBLIC,29654,,,1059,,False
+GLM-5.3,filing_extract_alrajhi_ar,1,NONE PUBLIC,117565,,,3001,,False
+GLM-5.3,filing_extract_alrajhi_ar,2,NONE PUBLIC,117565,,,6735,,False
+GLM-5.3,filing_multi_en,1,NONE PUBLIC,82733,,,1499,,False
+GLM-5.3,filing_multi_en,2,NONE PUBLIC,82733,,,704,,False
+GLM-5.3,filing_multi_ar,1,NONE PUBLIC,206738,,,4736,,False
+GLM-5.3,filing_multi_ar,2,NONE PUBLIC,206738,,,2365,,False
+DeepSeek V4 Pro,filing_extract_mis_en,1,deepseek-tokenizer,13775,13692.0,83.0,655,654.0,True
+DeepSeek V4 Pro,filing_extract_mis_en,2,deepseek-tokenizer,13775,13692.0,83.0,1349,1348.0,True
+DeepSeek V4 Pro,filing_extract_mis_ar,1,deepseek-tokenizer,20513,20430.0,83.0,566,565.0,True
+DeepSeek V4 Pro,filing_extract_mis_ar,2,deepseek-tokenizer,20513,20430.0,83.0,933,932.0,True
+DeepSeek V4 Pro,filing_extract_aramco_en,1,deepseek-tokenizer,36094,36011.0,83.0,1066,1065.0,True
+DeepSeek V4 Pro,filing_extract_aramco_en,2,deepseek-tokenizer,36094,36011.0,83.0,2229,2228.0,True
+DeepSeek V4 Pro,filing_extract_aramco_ar,1,deepseek-tokenizer,62657,62574.0,83.0,2054,2053.0,True
+DeepSeek V4 Pro,filing_extract_aramco_ar,2,deepseek-tokenizer,62657,62574.0,83.0,1150,1149.0,True
+DeepSeek V4 Pro,filing_extract_alrajhi_en,1,deepseek-tokenizer,26741,26658.0,83.0,3402,3401.0,True
+DeepSeek V4 Pro,filing_extract_alrajhi_en,2,deepseek-tokenizer,26741,26658.0,83.0,4082,4081.0,True
+DeepSeek V4 Pro,filing_extract_alrajhi_ar,1,deepseek-tokenizer,109936,109853.0,83.0,8002,8002.0,True
+DeepSeek V4 Pro,filing_extract_alrajhi_ar,2,deepseek-tokenizer,109936,109853.0,83.0,8000,8000.0,True
+DeepSeek V4 Pro,filing_multi_en,1,deepseek-tokenizer,76310,76227.0,83.0,4664,4663.0,True
+DeepSeek V4 Pro,filing_multi_en,2,deepseek-tokenizer,76310,76227.0,83.0,2382,2381.0,True
+DeepSeek V4 Pro,filing_multi_ar,1,deepseek-tokenizer,192763,192680.0,83.0,3905,3904.0,True
+DeepSeek V4 Pro,filing_multi_ar,2,deepseek-tokenizer,192763,192680.0,83.0,3302,3301.0,True
+Gemini 3.1 Pro,filing_extract_mis_en,1,NONE PUBLIC,16761,,,1435,,False
+Gemini 3.1 Pro,filing_extract_mis_en,2,NONE PUBLIC,16761,,,1607,,False
+Gemini 3.1 Pro,filing_extract_mis_ar,1,NONE PUBLIC,22242,,,1428,,False
+Gemini 3.1 Pro,filing_extract_mis_ar,2,NONE PUBLIC,22242,,,1287,,False
+Gemini 3.1 Pro,filing_extract_aramco_en,1,NONE PUBLIC,44383,,,1573,,False
+Gemini 3.1 Pro,filing_extract_aramco_en,2,NONE PUBLIC,44383,,,1170,,False
+Gemini 3.1 Pro,filing_extract_aramco_ar,1,NONE PUBLIC,64846,,,1972,,False
+Gemini 3.1 Pro,filing_extract_aramco_ar,2,NONE PUBLIC,64846,,,1524,,False
+Gemini 3.1 Pro,filing_extract_alrajhi_en,1,NONE PUBLIC,35129,,,924,,False
+Gemini 3.1 Pro,filing_extract_alrajhi_en,2,NONE PUBLIC,35129,,,1280,,False
+Gemini 3.1 Pro,filing_extract_alrajhi_ar,1,NONE PUBLIC,81943,,,1396,,False
+Gemini 3.1 Pro,filing_extract_alrajhi_ar,2,NONE PUBLIC,81943,,,1596,,False
+Gemini 3.1 Pro,filing_multi_en,1,NONE PUBLIC,96119,,,1741,,False
+Gemini 3.1 Pro,filing_multi_en,2,NONE PUBLIC,96119,,,1613,,False
+Gemini 3.1 Pro,filing_multi_ar,1,NONE PUBLIC,168853,,,1564,,False
+Gemini 3.1 Pro,filing_multi_ar,2,NONE PUBLIC,168853,,,1746,,False
+GPT-5.6 Sol,filing_extract_mis_en,1,tiktoken o200k_base,13701,13695.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_extract_mis_en,2,tiktoken o200k_base,13701,13695.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_extract_mis_ar,1,tiktoken o200k_base,18051,18045.0,6.0,91,33.0,False
+GPT-5.6 Sol,filing_extract_mis_ar,2,tiktoken o200k_base,18051,18045.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_extract_aramco_en,1,tiktoken o200k_base,36031,36025.0,6.0,185,29.0,False
+GPT-5.6 Sol,filing_extract_aramco_en,2,tiktoken o200k_base,36031,36025.0,6.0,111,130.0,True
+GPT-5.6 Sol,filing_extract_aramco_ar,1,tiktoken o200k_base,55945,55939.0,6.0,134,29.0,False
+GPT-5.6 Sol,filing_extract_aramco_ar,2,tiktoken o200k_base,55945,55939.0,6.0,119,138.0,True
+GPT-5.6 Sol,filing_extract_alrajhi_en,1,tiktoken o200k_base,26528,26522.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_extract_alrajhi_en,2,tiktoken o200k_base,26528,26522.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_extract_alrajhi_ar,1,tiktoken o200k_base,113822,113816.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_extract_alrajhi_ar,2,tiktoken o200k_base,113822,113816.0,6.0,37,33.0,False
+GPT-5.6 Sol,filing_multi_en,1,tiktoken o200k_base,76116,76110.0,6.0,204,36.0,False
+GPT-5.6 Sol,filing_multi_en,2,tiktoken o200k_base,76116,76110.0,6.0,192,36.0,False
+GPT-5.6 Sol,filing_multi_ar,1,tiktoken o200k_base,187663,187657.0,6.0,221,36.0,False
+GPT-5.6 Sol,filing_multi_ar,2,tiktoken o200k_base,187663,187657.0,6.0,251,36.0,False
+Kimi K3,filing_extract_mis_en,1,NONE PUBLIC,13892,,,1111,,False
+Kimi K3,filing_extract_mis_en,2,NONE PUBLIC,13892,,,1876,,False
+Kimi K3,filing_extract_mis_ar,1,NONE PUBLIC,23569,,,693,,False
+Kimi K3,filing_extract_mis_ar,2,NONE PUBLIC,23569,,,284,,False
+Kimi K3,filing_extract_aramco_en,1,NONE PUBLIC,36279,,,2456,,False
+Kimi K3,filing_extract_aramco_en,2,NONE PUBLIC,36279,,,956,,False
+Kimi K3,filing_extract_aramco_ar,1,NONE PUBLIC,70433,,,1124,,False
+Kimi K3,filing_extract_aramco_ar,2,NONE PUBLIC,70433,,,829,,False
+Kimi K3,filing_extract_alrajhi_en,1,NONE PUBLIC,26785,,,1380,,False
+Kimi K3,filing_extract_alrajhi_en,2,NONE PUBLIC,26785,,,975,,False
+Kimi K3,filing_extract_alrajhi_ar,1,NONE PUBLIC,97220,,,967,,False
+Kimi K3,filing_extract_alrajhi_ar,2,NONE PUBLIC,97220,,,531,,False
+Kimi K3,filing_multi_en,1,NONE PUBLIC,76653,,,746,,False
+Kimi K3,filing_multi_en,2,NONE PUBLIC,76653,,,1357,,False
+Kimi K3,filing_multi_ar,1,NONE PUBLIC,190823,,,878,,False
+Kimi K3,filing_multi_ar,2,NONE PUBLIC,190823,,,1127,,False
+Claude Fable 5,filing_extract_mis_en,1,NONE PUBLIC,20619,,,99,,False
+Claude Fable 5,filing_extract_mis_en,2,NONE PUBLIC,20619,,,99,,False
+Claude Fable 5,filing_extract_mis_ar,1,NONE PUBLIC,29498,,,104,,False
+Claude Fable 5,filing_extract_mis_ar,2,NONE PUBLIC,29498,,,106,,False
+Claude Fable 5,filing_extract_aramco_en,1,NONE PUBLIC,52807,,,424,,False
+Claude Fable 5,filing_extract_aramco_en,2,NONE PUBLIC,52807,,,292,,False
+Claude Fable 5,filing_extract_aramco_ar,1,NONE PUBLIC,93571,,,359,,False
+Claude Fable 5,filing_extract_aramco_ar,2,NONE PUBLIC,93571,,,296,,False
+Claude Fable 5,filing_extract_alrajhi_en,1,NONE PUBLIC,38840,,,231,,False
+Claude Fable 5,filing_extract_alrajhi_en,2,NONE PUBLIC,38840,,,227,,False
+Claude Fable 5,filing_extract_alrajhi_ar,1,NONE PUBLIC,158686,,,394,,False
+Claude Fable 5,filing_extract_alrajhi_ar,2,NONE PUBLIC,158686,,,521,,False
+Claude Fable 5,filing_multi_en,1,NONE PUBLIC,112057,,,508,,False
+Claude Fable 5,filing_multi_en,2,NONE PUBLIC,112057,,,334,,False
+Claude Fable 5,filing_multi_ar,1,NONE PUBLIC,281472,,,395,,False
+Claude Fable 5,filing_multi_ar,2,NONE PUBLIC,281472,,,354,,False

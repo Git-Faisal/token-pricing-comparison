@@ -152,7 +152,7 @@ python reconcile.py            # billed counts vs public tokenizers
   run-to-run variance
 - `charts/*.png` — working charts (unstyled)
 
-## Results (run of 2026-08-19/20, 220 calls, $49.65)
+## Results (main run 2026-08-19/20; filings run 2026-08-28; 316 calls, $72.59 total)
 
 Full data: `results/results.csv` (per-call billed tokens, costs, latency,
 success), `results/summary.md`, `results/reconcile.csv`, `charts/`.
@@ -208,6 +208,39 @@ No model solved it in any run, either language, at 16K, 32K, or 128K budgets.
 GLM, DeepSeek, and Fable burned their full budgets (Fable: $6.40 per
 128K-token failure); Sol and Gemini stopped early and submitted wrong grids.
 Kimi thought 104K tokens on one attempt ($1.56) and still failed.
+
+### Real filings (96 cells, $22.93): English solved everywhere, every failure was Arabic
+
+| Model | Correct | Suite spend | Notes |
+|---|---|---|---|
+| GPT-5.6 Sol | **16/16** | $1.44 | Perfect, near-zero thinking (37-token answers off 114K-token reads) |
+| Kimi K3 | **16/16** | $2.03 | Perfect, 5-30x Sol's thinking for the same answers |
+| GLM-5.3 | 15/16 | $1.17 | One Arabic extraction died at the output cap |
+| Gemini 3.1 Pro | 15/16 | $1.84 | Failed one Arabic multi-filing run |
+| Claude Fable 5 | 14/16 | **$15.99** | Failed the Arabic multi-filing twice, at $2.83 per wrong answer |
+| DeepSeek V4 Pro | 12/16 | **$0.46** | All four failures Arabic (two output-cap deaths, two wrong rankings) |
+
+- **English document work is solved**: 48/48 across all six labs. All 8 failures
+  in the suite were Arabic cells, concentrated in long context: the Arabic
+  document set bills 1.5-2.5x the English tokens, and the multi-filing prompt
+  reached 188K-281K tokens, where three labs' answers (DeepSeek, Fable, half
+  of Gemini's) got the cross-units net-income ranking wrong.
+- **The input meter, same filing**: 13,701 billed tokens (Sol) to 20,619
+  (Fable) -- Fable's meter reads 50% more tokens than Sol's for the identical
+  document, and each token costs 4x more, compounding to a ~6x input bill
+  before any output.
+- **The cost-accuracy frontier is stark**: the same 16-call suite cost
+  DeepSeek $0.46 (with 4 failures) and Fable $15.99 (with 2) -- a 35x spend
+  gap. Sol's $1.44 for a perfect score is the suite's efficiency frontier;
+  Fable billed $5.67 for its two wrong analyst answers alone, 11x what Sol
+  charged for two right ones.
+- **The content filter irony**: Fable, which refused our synthetic Arabic
+  logistics memo as "violative cyber content," read the real bank and oil
+  company filings without objection.
+- **Cache economics measured in passing**: byte-identical repeat calls cost
+  3-11x less than their first runs across four labs (e.g. Sol $0.0346 ->
+  $0.0031 on the same filing) -- the effective input price depends on your
+  workload's cache rhythm, which no price sheet shows.
 
 ### The hypothesis test: sticker price vs. what work actually cost
 
